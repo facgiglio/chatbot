@@ -265,7 +265,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\OneDrive\Proyectos\Framework\Framework.csproj">
+    <ProjectReference Include="..\..\Framework\Framework.csproj">
       <Project>{a2d6cdcd-735c-4ebc-8794-70bd8b3a0d16}</Project>
       <Name>Framework</Name>
     </ProjectReference>

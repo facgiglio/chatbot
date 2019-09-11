@@ -14,3 +14,19 @@ C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\obj\Debug\Rule
 C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\obj\Debug\Rules.pdb
 C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\log4net.dll
 C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\log4net.xml
+C:\Projects\Chatbot\Rules\bin\Debug\Rules.dll
+C:\Projects\Chatbot\Rules\bin\Debug\Rules.pdb
+C:\Projects\Chatbot\Rules\bin\Debug\Entities.dll
+C:\Projects\Chatbot\Rules\bin\Debug\Framework.dll
+C:\Projects\Chatbot\Rules\bin\Debug\log4net.dll
+C:\Projects\Chatbot\Rules\bin\Debug\Newtonsoft.Json.dll
+C:\Projects\Chatbot\Rules\bin\Debug\Framework.pdb
+C:\Projects\Chatbot\Rules\bin\Debug\Entities.pdb
+C:\Projects\Chatbot\Rules\bin\Debug\log4net.xml
+C:\Projects\Chatbot\Rules\bin\Debug\Newtonsoft.Json.pdb
+C:\Projects\Chatbot\Rules\bin\Debug\Newtonsoft.Json.xml
+C:\Projects\Chatbot\Rules\obj\Debug\Rules.csprojResolveAssemblyReference.cache
+C:\Projects\Chatbot\Rules\obj\Debug\Rules.csproj.CoreCompileInputs.cache
+C:\Projects\Chatbot\Rules\obj\Debug\Rules.csproj.CopyComplete
+C:\Projects\Chatbot\Rules\obj\Debug\Rules.dll
+C:\Projects\Chatbot\Rules\obj\Debug\Rules.pdb
