@@ -1,0 +1,12 @@
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Entities\bin\Debug\Entities.dll
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Entities\bin\Debug\Entities.pdb
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Entities\bin\Debug\Framework.dll
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Entities\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Entities\bin\Debug\Framework.pdb
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Entities\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Entities\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Entities\obj\Debug\Models.csprojResolveAssemblyReference.cache
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Entities\obj\Debug\Models.csproj.CoreCompileInputs.cache
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Entities\obj\Debug\Models.csproj.CopyComplete
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Entities\obj\Debug\Entities.dll
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Entities\obj\Debug\Entities.pdb

@@ -1,0 +1,16 @@
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\Rules.dll
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\Rules.pdb
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\Entities.dll
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\Framework.dll
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\Framework.pdb
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\Entities.pdb
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\obj\Debug\Rules.csprojResolveAssemblyReference.cache
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\obj\Debug\Rules.csproj.CoreCompileInputs.cache
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\obj\Debug\Rules.csproj.CopyComplete
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\obj\Debug\Rules.dll
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\obj\Debug\Rules.pdb
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\log4net.dll
+C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\log4net.xml
