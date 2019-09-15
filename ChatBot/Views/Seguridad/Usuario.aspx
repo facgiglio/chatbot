@@ -21,6 +21,10 @@
                                 <input id="txtEmail" type="text" class="form-control form-control-sm">
                             </div>
                             <div >
+                                <label id="lblContrasena" for="txtContrasena" class="col-form-label" runat="server">Email:</label>
+                                <input id="txtContrasena" type="text" class="form-control form-control-sm">
+                            </div>
+                            <div >
                                 <label id="lblNombre" for="txtNombre" class="col-form-label" runat="server">Nombre:</label>
                                 <input id="txtNombre" class="form-control form-control-sm" />
                             </div>
@@ -104,7 +108,7 @@
 
             $("#hddId").val(Usuario.IdUsuario);
             $("#txtEmail").val(Usuario.Email);
-            $("#hddContrasena").val(Usuario.Contrasena);
+            $("#txtContrasena").val(Usuario.Contrasena);
             $("#txtNombre").val(Usuario.Nombre);
             $("#txtApellido").val(Usuario.Apellido);
             $("#ddlIdioma").val(Usuario.IdIdioma);
@@ -118,7 +122,7 @@
         function ClearData() {
             $("#hddId").val(0);
             $("#txtEmail").val("");
-            $("#hddContrasena").val();
+            $("#txtContrasena").val();
             $("#txtNombre").val("");
             $("#txtApellido").val("");
             $("#ddlIdioma").val(0);
@@ -141,7 +145,7 @@
             var usuario = {
                 "IdUsuario": $("#hddId").val(),
                 "Email": $("#txtEmail").val(),
-                "Contrasena": $("#hddContrasena").val(),
+                "Contrasena": $("#txtContrasena").val(),
                 "Nombre": $("#txtNombre").val(),
                 "Apellido": $("#txtApellido").val(),
                 "IdIdioma": $("#ddlIdioma").val(),

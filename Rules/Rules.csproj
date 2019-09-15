@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Palabra.cs" />
     <Compile Include="Frase.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="Idioma.cs" />

@@ -126,6 +126,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\en.png" />
+    <Content Include="Content\img\es.png" />
+    <Content Include="Content\img\pt.png" />
     <Content Include="LogIn.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Contact.aspx" />
@@ -156,8 +159,10 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Views\Administracion\Palabra.aspx" />
     <Content Include="Views\Administracion\Frase.aspx" />
     <Content Include="Views\Administracion\Cliente.aspx" />
+    <Content Include="Views\ChatBot.html" />
     <Content Include="Views\MultiIdioma\MultiIdioma.aspx" />
     <Content Include="Views\Seguridad\Usuario.aspx" />
     <Content Include="Web.config">
@@ -221,6 +226,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administracion\Palabra.aspx.cs">
+      <DependentUpon>Palabra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Administracion\Palabra.aspx.designer.cs">
+      <DependentUpon>Palabra.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Administracion\Frase.aspx.cs">
       <DependentUpon>Frase.aspx</DependentUpon>

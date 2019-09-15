@@ -51,6 +51,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administración<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a runat="server" href="~/Views/Administracion/Frase">Frases</a></li>
+                                <li><a runat="server" href="~/Views/Administracion/Palabra">Palabras</a></li>
                                 <li><a runat="server" href="~/Views/Administracion/Cliente">Clientes</a></li>
                             </ul>
                         </li>
@@ -65,8 +66,11 @@
                                 <li><a runat="server" href="~/Views/MultiIdioma/MultiIdioma">MultiIdioma</a></li>
                             </ul>
                         </li>
+                        <li><a runat="server" href="~/Views/ChatBot">ChatBot</a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right" id="navUser" runat="server">
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" id="navLogin" runat="server">
                         <li><a runat="server" href="~/LogIn">LogIn</a></li>
                     </ul>
                 </div>

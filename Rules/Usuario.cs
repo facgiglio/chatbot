@@ -81,6 +81,9 @@ namespace Rules
         #region Modificar
         public void Modificar(Framework.Models.Usuario usuario)
         {
+            //Hasheo la contraseña de la pantalla
+            usuario.Contrasena = Security.Encrypt(usuario.Contrasena);
+
             //Actualizo el usuario
             mapper.Update(usuario);
             //Guardo el usuario modificado en la sessión.
@@ -112,8 +115,8 @@ namespace Rules
                 };
 
                 var usuario = mapper.GetById(Id);
+                usuario.Contrasena = Security.Decrypt(usuario.Contrasena); 
                 usuario.Roles = mapperRol.GetListEntityMany(Id);
-
 
                 return usuario;
             }
