@@ -126,6 +126,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Chatbot\chatbot.css" />
+    <Content Include="Chatbot\chatbot.js" />
+    <Content Include="Chatbot\chatbotWS.asmx" />
+    <Content Include="Chatbot\close.png" />
+    <Content Include="Chatbot\send.png" />
     <Content Include="Content\img\en.png" />
     <Content Include="Content\img\es.png" />
     <Content Include="Content\img\pt.png" />
@@ -172,6 +177,10 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chatbot\chatbotWS.asmx.cs">
+      <DependentUpon>chatbotWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="LogIn.aspx.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
