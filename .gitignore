@@ -2,5 +2,11 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/ChatBot/config/applicationhost.config
-/.vs/ChatBot/v16
+/.vs
+/Chatbot/bin
+/Chatbot/obj
+/Entities/bin
+/Entities/obj
+/Rules/bin
+/Rules/obj
+*.dll
