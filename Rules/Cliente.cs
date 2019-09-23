@@ -47,9 +47,7 @@ namespace Rules
                     new SqlParameter("@IdCliente", Id)
                 };
 
-                var cliente = mapper.GetById(Id);
-
-                return cliente;
+                return mapper.GetById(Id);
             }
             catch (Exception ex)
             {

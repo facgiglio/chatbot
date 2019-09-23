@@ -134,7 +134,6 @@
 
         function Accion() {
             
-            var permisos = [];
             var roles = [];
 
             $("#grdRoles input:checked").each(function () {

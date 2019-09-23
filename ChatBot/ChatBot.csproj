@@ -169,6 +169,8 @@
     <Content Include="Views\Administracion\Cliente.aspx" />
     <Content Include="Views\ChatBot.html" />
     <Content Include="Views\MultiIdioma\MultiIdioma.aspx" />
+    <Content Include="Views\Seguridad\Rol.aspx" />
+    <Content Include="Views\Seguridad\Permiso.aspx" />
     <Content Include="Views\Seguridad\Usuario.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -263,6 +265,20 @@
     </Compile>
     <Compile Include="Views\MultiIdioma\MultiIdioma.aspx.designer.cs">
       <DependentUpon>MultiIdioma.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Seguridad\Rol.aspx.cs">
+      <DependentUpon>Rol.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Seguridad\Rol.aspx.designer.cs">
+      <DependentUpon>Rol.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Seguridad\Permiso.aspx.cs">
+      <DependentUpon>Permiso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Seguridad\Permiso.aspx.designer.cs">
+      <DependentUpon>Permiso.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Seguridad\Usuario.aspx.cs">
       <DependentUpon>Usuario.aspx</DependentUpon>

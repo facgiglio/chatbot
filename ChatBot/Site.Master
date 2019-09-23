@@ -41,7 +41,7 @@
                     </button>
                     <a class="navbar-brand" runat="server" href="~/">ChatBot</a>
                 </div>
-                <div class="navbar-collapse collapse">
+                <nav class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
@@ -60,8 +60,8 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Seguridad <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a runat="server" href="~/Views/Seguridad/Usuario">Usuarios</a></li>
-                                <li><a href="#">Roles</a></li>
-                                <li><a href="#">Permisos</a></li>
+                                <li><a runat="server" href="~/Views/Seguridad/Rol">Roles</a></li>
+                                <li><a runat="server" href="~/Views/Seguridad/Permiso">Permisos</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a runat="server" href="~/Views/MultiIdioma/MultiIdioma">MultiIdioma</a></li>
                             </ul>
@@ -73,7 +73,7 @@
                     <ul class="nav navbar-nav navbar-right" id="navLogin" runat="server">
                         <li><a runat="server" href="~/LogIn">LogIn</a></li>
                     </ul>
-                </div>
+                </nav>
             </div>
         </div>
         

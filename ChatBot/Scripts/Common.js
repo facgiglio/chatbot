@@ -2,7 +2,7 @@
 
 
 function getActionUrl(modo) {
-    var loc = window.location.pathname + (window.location.pathname.indexOf('.aspx') == -1 ? '.aspx' : '');
+    var loc = window.location.pathname + (window.location.pathname.indexOf('.aspx') === -1 ? '.aspx' : '');
     var page = loc.substring(loc.lastIndexOf('/') + 1, loc.length);
 
     switch (modo) {
@@ -28,18 +28,15 @@ function getActionUrl(modo) {
 
 // #region Administracion de Errores
 function CheckError(result) {
-
     switch (result.d.Result) {
         case "Message":
             showMessage("body", result.d.Message, 5000, "success");
             break;
         case "Success":
             return false;
-            break;
         case "Error":
             showMessage("body", result.d.Message, 5000, "danger");
             return true;
-            break;
         case "DataBaseCorrupt":
             showMessage("body", result.d.Message, 5000, "danger");
 
@@ -54,13 +51,20 @@ function CheckError(result) {
 }
 
 function showMessage(container, message, delay, style) {
-    style = (style == null ? "success" : style);
+    style = (style === null ? "success" : style);
 
-    var div = '<div id="__messageError" class="alert alert-' + style + '" role="alert" style="position: absolute; z-index: 10; top:20px; width:100%; text-align:center">#MESSAGE#</div>'
+    message = message.replace("\r\n", "<br/>");
 
+    var div = document.createElement('div');
+    div.id = "__messageError";
+    div.classList.add("alert");
+    div.classList.add("alert-" + style);
+    div.setAttribute('style', 'position: absolute; z-index: 10; top:20px; width:100%; text-align:center');
+    div.innerHTML = message;
+    
     $("#__messageError").remove();
 
-    $(container).append(div.replace("#MESSAGE#", message));
+    $(container).append(div);
 
     window.setTimeout(function () {
         $("#__messageError").fadeOut("slow");

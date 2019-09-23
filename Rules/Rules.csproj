@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chatbot.cs" />
     <Compile Include="Palabra.cs" />
     <Compile Include="Frase.cs" />
+    <Compile Include="Aprender.cs" />
+    <Compile Include="Permiso.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="Idioma.cs" />
     <Compile Include="Seccion.cs" />

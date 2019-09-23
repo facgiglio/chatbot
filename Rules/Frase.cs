@@ -43,10 +43,6 @@ namespace Rules
         {
             try
             {
-                List<SqlParameter> parameters = new List<SqlParameter>() {
-                    new SqlParameter("@IdFrase", Id)
-                };
-
                 var frase = mapper.GetById(Id);
 
                 return frase;
@@ -64,14 +60,48 @@ namespace Rules
         
         public Entities.Frase ObtenerPoryRazonSocial(string RazonSocial)
         {
-            List<SqlParameter> parameters = new List<SqlParameter>() {
-                new SqlParameter("@RazonSocial", RazonSocial)
-            };
+            SqlParameter[] parameters = { new SqlParameter("@RazonSocial", RazonSocial) };
 
-            return mapper.GetByWhere(parameters.ToArray());
+            return mapper.GetByWhere(parameters);
         }
-        
         #endregion
 
+        public List<string> AnalizarFrase(string mensaje)
+        {
+            var frases = new List<string>();
+
+            //Elimino los signos de puntuación para evitar interpretaciones incorrectas.
+            mensaje = mensaje.Replace("?", "").Replace(",","");
+
+            //Reemplazo los acentos por letras comunes.
+            mensaje = mensaje.Replace("á", "a").Replace("é", "e").Replace("í", "i").Replace("ó", "o").Replace("ú", "u");
+
+            //Split del mensaje por punto.
+            frases.AddRange(mensaje.Split('.'));
+
+            return frases;
+        }
+
+        public string BuscarFrase(List<string> frases)
+        {
+            SqlParameter[] parameters = {new SqlParameter("@Frases", String.Join("|", frases))};
+            //Obtengo primero por la frase exacta.
+            var respuestas = mapper.GetListEntity("BuscarFraseExacta", parameters);
+
+            if (respuestas.Count == 0)
+            {
+                //No no tengo la frase exacta, obtengo por un aproximado.
+                respuestas = mapper.GetListEntity("BuscarFraseAproximada", parameters);
+
+                if (respuestas.Count == 0)
+                {
+                    //Aca tengo que guardar el tema de aprender.
+                    return "No entendí una mierda, podes escribir mejor carajo. No cuesta una mierda ser claro, no?";
+                }
+            }
+
+            //Retorno la primer respuesta que encuentro.
+            return respuestas[0].Respuesta;
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace ChatBot
             grdRoles.AddColumn(MultiLanguage.GetTranslate("Usuario.aspx", "grdId"), ColumnType.CheckBox, "Descripcion", "IdRol", false, true);
             grdRoles.AddColumn(MultiLanguage.GetTranslate("Usuario.aspx", "grdNombre"), ColumnType.Data, "Descripcion", "", false, true);
             grdRoles.Config.Condense = true;
-            grdRoles.DataSource = new Rules.Rol().GetList();
+            grdRoles.DataSource = new Rules.Rol().GetList("");
 
             ddlIdioma.DataSource = new Rules.Idioma().GetList();
             ddlIdioma.DataTextField = "Descripcion";

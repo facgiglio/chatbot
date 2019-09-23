@@ -2,7 +2,6 @@
 <%@ Register TagPrefix="CW" Namespace="Framework.WebControls" Assembly="Framework" %>
 <%@ Import Namespace="Framework" %>
 
-
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <% const string _page = "MultiIdioma.aspx";%>
 
@@ -143,7 +142,7 @@
         }
 
         function LoadData(MultiIdioma) {
-            $("#hddId").val(MultiIdioma.Id);
+            $("#hddId").val(MultiIdioma.IdMultiLenguaje);
             $("#ddlSeccion").val(MultiIdioma.IdSeccion);
             $("#txtDescripcion").val(MultiIdioma.Descripcion);
         }

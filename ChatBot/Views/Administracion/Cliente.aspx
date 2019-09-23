@@ -74,30 +74,6 @@
 
         });
 
-        function getActionUrl(modo) {
-        var loc = window.location.pathname + (window.location.pathname.indexOf('.aspx') == -1 ? '.aspx' : '');
-        var page = loc.substring(loc.lastIndexOf('/') + 1, loc.length);
-
-        switch (modo) {
-            case "@Sav":
-                return page + "/Guardar";
-            case "@New":
-                return page + "/Insertar";
-            case "@Upd":
-                return page + "/Modificar";
-            case "@Del":
-                return page + "/Eliminar";
-            case "@Get":
-                return page + "/Obtener";
-            case "@Fil":
-                return page + "/Filtrar";
-            default:
-                return page + "/" + modo;
-        }
-    }
-        
-        
-
         function Accion() {
             var entity = {
                 "IdCliente": $("#hddId").val(),

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aprender.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Frase.cs" />
     <Compile Include="Palabra.cs" />
