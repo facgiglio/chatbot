@@ -14,3 +14,5 @@
 .vs/ChatBot/v15/.suo
 .vs/ChatBot/v15/Server/sqlite3/storage.ide-shm
 .vs/ChatBot/v15/Server/sqlite3/storage.ide-wal
+*.pdb
+*.dll
