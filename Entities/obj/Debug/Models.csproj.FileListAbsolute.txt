@@ -34,3 +34,5 @@ D:\Projects\Chatbot\Entities\obj\Debug\Models.csproj.CoreCompileInputs.cache
 D:\Projects\Chatbot\Entities\obj\Debug\Models.csproj.CopyComplete
 D:\Projects\Chatbot\Entities\obj\Debug\Entities.dll
 D:\Projects\Chatbot\Entities\obj\Debug\Entities.pdb
+C:\Projects\Chatbot\Entities\bin\Debug\log4net.dll
+C:\Projects\Chatbot\Entities\bin\Debug\log4net.xml

@@ -5,17 +5,14 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using Framework;
 using Framework.WebControls;
-using log4net;
-using log4net.Config;
 
 namespace ChatBot
 {
     public partial class Rol : Page
     {
-        private readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        //private readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         const string _page = "Rol.aspx";
 
         protected void Page_Load(object sender, EventArgs e)

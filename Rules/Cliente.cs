@@ -15,6 +15,8 @@ namespace Rules
         public void Insertar(Entities.Cliente cliente)
         {
             mapper.Insert(cliente);
+
+            Logger.LogInfo();
         }
         #endregion
 

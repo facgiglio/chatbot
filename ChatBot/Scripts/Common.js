@@ -1,7 +1,4 @@
-﻿// #region Funciones genéricas de pantalla de ABM
-
-
-function getActionUrl(modo) {
+﻿function getActionUrl(modo) {
     var loc = window.location.pathname + (window.location.pathname.indexOf('.aspx') === -1 ? '.aspx' : '');
     var page = loc.substring(loc.lastIndexOf('/') + 1, loc.length);
 
@@ -22,11 +19,7 @@ function getActionUrl(modo) {
             return page + "/" + modo;
     }
 }
-// #endregion
 
-
-
-// #region Administracion de Errores
 function CheckError(result) {
     switch (result.d.Result) {
         case "Message":
@@ -70,5 +63,5 @@ function showMessage(container, message, delay, style) {
         $("#__messageError").fadeOut("slow");
     }, delay);
 }
-// #endregion
+
 

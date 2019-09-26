@@ -3,7 +3,7 @@
 <%@ Import Namespace="Framework" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <% const string _page = "Cliente.aspx";%>
+    <% const string _section = "Cliente.aspx";%>
 
     <div class="form-group">
         <div class="row">
@@ -69,19 +69,86 @@
     </div>
 
     <script type="text/javascript">
-        $(document).ready(function () {
+        const tituloNuevo = '<%: MultiLanguage.GetTranslate(_section, "tituloNuevo")%>';
+        const tituloActualizar = '<%: MultiLanguage.GetTranslate(_section, "tituloActualizar")%>';
+        const tituloEliminar = '<%: MultiLanguage.GetTranslate(_section, "tituloEliminar")%>';
 
+        $(document).ready(function () {});
 
-        });
+        //--||-----------------------------------------------------------------------------------||--//
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var mode = button.data('mode') // Extract info from data-* attributes
+
+            //Guardo el modo en el que ingreso a la pantalla.
+            $("#hddModo").val(mode);
+
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this);
+            var title;
+
+            switch (mode) {
+                case "@New":
+                    ClearData();
+                    title = tituloNuevo;
+                    break;
+                case "@Upd":
+                    Get(grdCliente);
+                    title = tituloActualizar;
+                    break;
+                case "@Del":
+                    Get(grdCliente);
+                    title = tituloEliminar;
+                    break;
+            }
+
+            modal.find('.modal-title').text(title)
+        })
+        //--||-----------------------------------------------------------------------------------||--//
+        function Get(grid) {
+            var entity = JSON.parse($(grid.activeRow).attr("rowdata"));
+            var jsonData = { "Id": entity.IdCliente}
+            $.ajax({
+                type: "POST",
+                url: getActionUrl("@Get"),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify(jsonData),
+                success: function (result) {
+                    LoadData(result.d)
+                }
+            });
+        }
+
+        function LoadData(entity) { 
+            ClearData();
+
+            $("#hddId").val(entity.IdCliente);
+            $("#txtRazonSocial").val(entity.RazonSocial);
+            $("#txtDireccion").val(entity.Direccion);
+            $("#txtCodigoPostal").val(entity.CodigoPostal);
+            $("#txtTelefono").val(entity.Telefono);
+        }
+
+        function ClearData() {
+            $("#hddId").val(0);
+            $("#txtRazonSocial").val("");
+            $("#txtDireccion").val("");
+            $("#txtCodigoPostal").val("");
+            $("#txtTelefono").val("");
+        }
 
         function Accion() {
-            var entity = {
+             var entity = {
                 "IdCliente": $("#hddId").val(),
                 "RazonSocial": $("#txtRazonSocial").val(),
                 "Direccion": $("#txtDireccion").val(),
                 "CodigoPostal": $("#txtCodigoPostal").val(),
                 "Telefono": $("#txtTelefono").val()
             }
+
+            if (!Validaciones(entity)) return false;
 
             $.ajax({
                 type: "POST",
@@ -96,11 +163,25 @@
                     showMessage("#exampleModal", error.responseJSON.Message, 5000, "danger");
                 }
             });
-            
+        }
 
+        function Validaciones(entity) {
+            var validToSave = true;
+            var errorMessage = "";
 
+            if (entity.RazonSocial == "") {
+                errorMessage += '<%:MultiLanguage.GetTranslate(_section, "lblRazonSocial") + ": "%>';
+                errorMessage += '<%:MultiLanguage.GetTranslate("errorVacioString")%>';
+            }
+
+            if (!validToSave) {
+                showMessage("#exampleModal", error.responseJSON.Message, 5000, "info");
+            }
+
+            return validToSave;
         }
         //--||-----------------------------------------------------------------------------------||--//
+
     </script>
 
 </asp:Content>
