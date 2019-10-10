@@ -133,11 +133,23 @@ namespace Rules
         
         public Framework.Models.Usuario GetByUsuario(string Usuario)
         {
+            MapperMany<Framework.Models.Usuario, Framework.Models.Rol> mapperRol = new MapperMany<Framework.Models.Usuario, Framework.Models.Rol>();
+
             List<SqlParameter> parameters = new List<SqlParameter>() {
                 new SqlParameter("@Email", Usuario)
             };
 
-            return mapper.GetByWhere(parameters.ToArray());
+            var usuario = mapper.GetByWhere(parameters.ToArray());
+            usuario.Roles = mapperRol.GetListEntityMany(usuario.IdUsuario);
+
+            //Por cada rol obtengo los permisos asociados cada uno.
+            foreach (var rol in usuario.Roles)
+            {
+                var mapperPermiso = new MapperMany<Framework.Models.Rol, Framework.Models.Permiso>();
+                rol.Permisos = mapperPermiso.GetListEntityMany(rol.IdRol);
+            }
+
+            return usuario;
         }
         
         #endregion

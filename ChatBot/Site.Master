@@ -47,26 +47,24 @@
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                         
-                         <li class="dropdown">
+                        <li class="dropdown" runat="server" id="mnuAdministracion">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administración<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a runat="server" href="~/Views/Administracion/Frase">Frases</a></li>
-                                <li><a runat="server" href="~/Views/Administracion/Palabra">Palabras</a></li>
-                                <li><a runat="server" href="~/Views/Administracion/Cliente">Clientes</a></li>
+                                <li><a runat="server" href="~/Views/Administracion/Frase" id="mnuFrase">Frases</a></li>
+                                <li><a runat="server" href="~/Views/Administracion/Palabra" id="mnuPalabra">Palabras</a></li>
+                                <li><a runat="server" href="~/Views/Administracion/Cliente" id="mnuCliente">Clientes</a></li>
                             </ul>
                         </li>
 
-                        <li class="dropdown">
+                        <li class="dropdown" runat="server" id="mnuSeguridad">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Seguridad <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a runat="server" href="~/Views/Seguridad/Usuario">Usuarios</a></li>
-                                <li><a runat="server" href="~/Views/Seguridad/Rol">Roles</a></li>
-                                <li><a runat="server" href="~/Views/Seguridad/Permiso">Permisos</a></li>
+                                <li><a runat="server" id="mnuUsuario"   href="~/Views/Seguridad/Usuario">Usuarios</a></li>
+                                <li><a runat="server" id="mnuRol"       href="~/Views/Seguridad/Rol">Roles</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a runat="server" href="~/Views/MultiIdioma/MultiIdioma">MultiIdioma</a></li>
+                                <li><a runat="server" id="mnuMultiidioma" href="~/Views/MultiIdioma/MultiIdioma">MultiIdioma</a></li>
                             </ul>
                         </li>
-                        <li><a runat="server" href="~/Views/ChatBot">ChatBot</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" id="navUser" runat="server">
                     </ul>
@@ -76,17 +74,10 @@
                 </nav>
             </div>
         </div>
-        
-
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
-            </footer>
         </div>
-
     </form>
 </body>
 </html>

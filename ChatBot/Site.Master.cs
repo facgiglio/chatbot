@@ -38,6 +38,25 @@ namespace ChatBot
 
                     navUser.InnerHtml = html;
                     navLogin.Style.Add("display", "none");
+
+                    //Framework.Security.IsAuthorized
+                }
+                else
+                {
+                    mnuAdministracion.Visible = false;
+                    mnuSeguridad.Visible = false;
+
+                    /*
+                    mnuAdministracion.Visible = false;
+                    mnuFrase.Visible = false;
+                    mnuPalabra.Visible = false;
+                    mnuCliente.Visible = false;
+
+                    mnuUsuario
+                    mnuRol
+                    mnuPermiso
+                    mnuMultiidioma
+                    */
                 }
             }
         }
