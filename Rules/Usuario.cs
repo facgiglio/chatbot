@@ -86,8 +86,11 @@ namespace Rules
 
             //Actualizo el usuario
             mapper.Update(usuario);
+
+            /*
             //Guardo el usuario modificado en la sessión.
             Framework.Helpers.Session.AddSessionUser(usuario);
+            */
         }
         #endregion
 
@@ -141,13 +144,6 @@ namespace Rules
 
             var usuario = mapper.GetByWhere(parameters.ToArray());
             usuario.Roles = mapperRol.GetListEntityMany(usuario.IdUsuario);
-
-            //Por cada rol obtengo los permisos asociados cada uno.
-            foreach (var rol in usuario.Roles)
-            {
-                var mapperPermiso = new MapperMany<Framework.Models.Rol, Framework.Models.Permiso>();
-                rol.Permisos = mapperPermiso.GetListEntityMany(rol.IdRol);
-            }
 
             return usuario;
         }

@@ -28,7 +28,7 @@ namespace ChatBot {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor mnuFrase;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mnuFrase;
         
         /// <summary>
         /// mnuPalabra control.
@@ -37,7 +37,7 @@ namespace ChatBot {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor mnuPalabra;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mnuPalabra;
         
         /// <summary>
         /// mnuCliente control.
@@ -46,7 +46,7 @@ namespace ChatBot {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor mnuCliente;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mnuCliente;
         
         /// <summary>
         /// mnuSeguridad control.
@@ -64,7 +64,7 @@ namespace ChatBot {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor mnuUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mnuUsuario;
         
         /// <summary>
         /// mnuRol control.
@@ -73,7 +73,7 @@ namespace ChatBot {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor mnuRol;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mnuRol;
         
         /// <summary>
         /// mnuMultiidioma control.
@@ -82,7 +82,7 @@ namespace ChatBot {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor mnuMultiidioma;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mnuMultiidioma;
         
         /// <summary>
         /// navUser control.

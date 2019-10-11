@@ -43,11 +43,8 @@ namespace Rules
         {
             try
             {
-                var mapperRol = new MapperMany<Framework.Models.Rol, Framework.Models.Permiso>();
                 var rol = mapper.GetById(Id);
                 
-                rol.Permisos = mapperRol.GetListEntityMany(Id);
-
                 return rol;
             }
             catch (Exception ex)

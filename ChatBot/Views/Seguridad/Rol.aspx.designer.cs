@@ -94,15 +94,6 @@ namespace ChatBot {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDescripcion;
         
         /// <summary>
-        /// grdPermiso control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Framework.WebControls.Grid grdPermiso;
-        
-        /// <summary>
         /// btnCancelar control.
         /// </summary>
         /// <remarks>

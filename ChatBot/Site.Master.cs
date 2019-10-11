@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Framework;
 
 namespace ChatBot
 {
@@ -11,6 +12,13 @@ namespace ChatBot
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Convert.ToBoolean(Request.QueryString["logout"]))
+            {
+                Framework.Helpers.Session.LogOut();
+            }
+
+            MenuSecurity();
+
             if (!Page.IsPostBack)
             {
                 var html = "";
@@ -34,29 +42,54 @@ namespace ChatBot
 
                     html += li.Replace("#CONTENT#", "<a class=\"nav-link\" href=\"" + Page.ResolveClientUrl("~/Content/Img/") + "\"><i class=\"fas fa-user\"></i>&nbsp;&nbsp;" + Framework.Helpers.Session.SessionUser.Nombre + ", " + Framework.Helpers.Session.SessionUser.Apellido + "</a>");
                     html += "<li><a class=\"nav-link\"><img src=\"" + Page.ResolveClientUrl("~/Content/Img/") + "" + flag + ".png\" /></a></li>";
-                    html += li.Replace("#CONTENT#", "<a class=\"nav-link\" href=\"" + Page.ResolveClientUrl("~/Home.aspx") + "\">Sign out</a>");
+                    html += li.Replace("#CONTENT#", "<a class=\"nav-link\" href=\"" + Page.ResolveClientUrl("~/Default.aspx?logout=true") + "\">Sign out</a>");
 
                     navUser.InnerHtml = html;
                     navLogin.Style.Add("display", "none");
 
-                    //Framework.Security.IsAuthorized
+                }
+            }
+        }
+
+        protected void MenuSecurity()
+        {
+            var menuSeguridad = new List<System.Web.UI.HtmlControls.HtmlGenericControl> {
+                mnuUsuario,
+                mnuRol,
+                mnuMultiidioma
+            };
+            var menuAdministracion = new List<System.Web.UI.HtmlControls.HtmlGenericControl>{
+                mnuMultiidioma,
+                mnuFrase,
+                mnuPalabra,
+                mnuCliente
+            };
+
+            mnuSeguridad.Visible = false;
+            mnuAdministracion.Visible = false;
+
+            foreach (var menu in menuSeguridad) {
+                if (Framework.Security.IsAuthorized(Convert.ToInt32(menu.Attributes["rol"])))
+                {
+                    menu.Visible = true;
+                    mnuSeguridad.Visible = true;
                 }
                 else
                 {
-                    mnuAdministracion.Visible = false;
-                    mnuSeguridad.Visible = false;
+                    menu.Visible = false;
+                }
+            }
 
-                    /*
-                    mnuAdministracion.Visible = false;
-                    mnuFrase.Visible = false;
-                    mnuPalabra.Visible = false;
-                    mnuCliente.Visible = false;
-
-                    mnuUsuario
-                    mnuRol
-                    mnuPermiso
-                    mnuMultiidioma
-                    */
+            foreach (var menu in menuAdministracion)
+            {
+                if (Framework.Security.IsAuthorized(Convert.ToInt32(menu.Attributes["rol"])))
+                {
+                    menu.Visible = true;
+                    mnuAdministracion.Visible = true;
+                }
+                else
+                {
+                    menu.Visible = false;
                 }
             }
         }
