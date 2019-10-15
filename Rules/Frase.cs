@@ -9,17 +9,17 @@ namespace Rules
 {
     public class Frase
     {
-        Mapper<Entities.Frase> mapper = new Mapper<Entities.Frase>();
+        Mapper<Models.Frase> mapper = new Mapper<Models.Frase>();
 
         #region Insertar
-        public void Insertar(Entities.Frase frase)
+        public void Insertar(Models.Frase frase)
         {
             mapper.Insert(frase);
         }
         #endregion
 
         #region Modificar
-        public void Modificar(Entities.Frase frase)
+        public void Modificar(Models.Frase frase)
         {
             //Actualizo el usuario
             mapper.Update(frase);
@@ -39,7 +39,7 @@ namespace Rules
 
         #region Obtener
         
-        public Entities.Frase ObtenerPorId(int Id)
+        public Models.Frase ObtenerPorId(int Id)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace Rules
             return mapper.GetList(null);
         }
         
-        public Entities.Frase ObtenerPoryRazonSocial(string RazonSocial)
+        public Models.Frase ObtenerPoryRazonSocial(string RazonSocial)
         {
             SqlParameter[] parameters = { new SqlParameter("@RazonSocial", RazonSocial) };
 

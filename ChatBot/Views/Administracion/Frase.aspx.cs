@@ -54,14 +54,14 @@ namespace ChatBot
         }
 
         [WebMethod]
-        public static void Insertar(Entities.Frase frase)
+        public static void Insertar(Models.Frase frase)
         {
             var br = new Rules.Frase();
             br.Insertar(frase);
         }
 
         [WebMethod]
-        public static void Modificar(Entities.Frase frase)
+        public static void Modificar(Models.Frase frase)
         {
             try
             {
@@ -75,14 +75,14 @@ namespace ChatBot
         }
 
         [WebMethod]
-        public static void Eliminar(Entities.Frase frase)
+        public static void Eliminar(Models.Frase frase)
         {
             var br = new Rules.Frase();
             br.Eliminar(frase.IdFrase);
         }
 
         [WebMethod]
-        public static Entities.Frase Obtener(int Id)
+        public static Models.Frase Obtener(int Id)
         {
             try
             {

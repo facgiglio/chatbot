@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Framework.Models.Attributes;
 
-namespace Entities
+namespace Models
 {
     public class Cliente
     {

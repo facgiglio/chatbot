@@ -9,17 +9,17 @@ namespace Rules
 {
     public class Aprender
     {
-        Mapper<Entities.Aprender> mapper = new Mapper<Entities.Aprender>();
+        Mapper<Models.Aprender> mapper = new Mapper<Models.Aprender>();
 
         #region Insertar
-        public void Insertar(Entities.Aprender aprender)
+        public void Insertar(Models.Aprender aprender)
         {
             mapper.Insert(aprender);
         }
         #endregion
 
         #region Modificar
-        public void Modificar(Entities.Aprender aprender)
+        public void Modificar(Models.Aprender aprender)
         {
             //Actualizo el aprender
             mapper.Update(aprender);
@@ -38,7 +38,7 @@ namespace Rules
         #endregion
 
         #region Get Aprender
-        public Entities.Aprender ObtenerPorId(int Id)
+        public Models.Aprender ObtenerPorId(int Id)
         {
             try
             {
