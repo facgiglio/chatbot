@@ -7,7 +7,7 @@
     <Name>Database</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{f60bde63-4df6-4b20-8945-aa61805e4aab}</ProjectGuid>
+    <ProjectGuid>{5d6ec078-1bfd-4243-94fc-b69b80df6e58}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
@@ -57,25 +57,5 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="dbo\" />
-    <Folder Include="dbo\Tables\" />
-    <Folder Include="dbo\Stored Procedures\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Build Include="dbo\Tables\UsuarioRol_1.sql" />
-    <Build Include="dbo\Tables\Usuario_1.sql" />
-    <Build Include="dbo\Tables\Traduccion_1.sql" />
-    <Build Include="dbo\Tables\Seccion_1.sql" />
-    <Build Include="dbo\Tables\Rol_1.sql" />
-    <Build Include="dbo\Tables\PermisoRol_1.sql" />
-    <Build Include="dbo\Tables\Permiso_1.sql" />
-    <Build Include="dbo\Tables\MultiLenguaje_1.sql" />
-    <Build Include="dbo\Tables\Log4NetLog_1.sql" />
-    <Build Include="dbo\Tables\Idioma_1.sql" />
-    <Build Include="dbo\Tables\FraseCliente_1.sql" />
-    <Build Include="dbo\Tables\Frase_1.sql" />
-    <Build Include="dbo\Tables\Cliente_1.sql" />
-    <Build Include="dbo\Stored Procedures\sys_Entity_1.sql" />
-    <Build Include="dbo\Stored Procedures\ListadoMultiIdioma_1.sql" />
   </ItemGroup>
 </Project>

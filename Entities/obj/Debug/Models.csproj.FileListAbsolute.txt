@@ -34,7 +34,6 @@ D:\Projects\Chatbot\Entities\obj\Debug\Models.csproj.CopyComplete
 D:\Projects\Chatbot\Entities\obj\Debug\Entities.dll
 D:\Projects\Chatbot\Entities\obj\Debug\Entities.pdb
 C:\Projects\Chatbot\Entities\bin\Debug\log4net.dll
-C:\Projects\Chatbot\Entities\bin\Debug\log4net.xml
 C:\Facu\chatbot\Entities\bin\Debug\Entities.dll
 C:\Facu\chatbot\Entities\bin\Debug\Entities.pdb
 C:\Facu\chatbot\Entities\bin\Debug\Framework.dll
