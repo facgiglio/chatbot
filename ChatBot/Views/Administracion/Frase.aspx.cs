@@ -25,16 +25,13 @@ namespace ChatBot
             if (!Security.IsAuthorized(_page, Constantes.Action.Listado))
                 Response.Redirect(Page.ResolveClientUrl("~/Views/LogIn.aspx"));
             */
-            XmlConfigurator.Configure();
-
-            this.log.Info("Inicio de la página");
 
             grdFrase.AddColumn(MultiLanguage.GetTranslate(_page, "grdId"), ColumnType.Data, "IdFrase", "", true, false);
             grdFrase.AddColumn(MultiLanguage.GetTranslate(_page, "lblDescripcion"), ColumnType.Data, "Descripcion", "", false, true);
             grdFrase.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate(_page, "cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
             grdFrase.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate(_page, "cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
             grdFrase.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate(_page, "cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
-            grdFrase.DataSource = new Rules.Frase().ObtenerListado();
+            grdFrase.DataSource = new Rules.Frase().ObtenerListadoPorCliente();
 
             SetLanguage();
         }

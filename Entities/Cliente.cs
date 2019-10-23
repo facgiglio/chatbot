@@ -19,5 +19,12 @@ namespace Models
         public string CodigoPostal { get; set; }
         [Insertable, Updatable]
         public string Telefono { get; set; }
+        [EntityMany("ClienteFrase", "Frase", "IdCliente", "IdFrase")]
+        public List<Models.Frase> Frases { get; set; }
+
+        public Cliente()
+        {
+            this.Frases = new List<Models.Frase>();
+        }
     }
 }

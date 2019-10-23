@@ -25,9 +25,9 @@ namespace ChatBot
                 var flag = "";
                 var li = "<li class=\"nav-item text-nowrap\">#CONTENT#</li>";
 
-                if (Framework.Helpers.Session.SessionUser != null)
+                if (Framework.Helpers.Session.User != null)
                 {
-                    switch (Framework.Helpers.Session.SessionUser.IdIdioma)
+                    switch (Framework.Helpers.Session.User.IdIdioma)
                     {
                         case 1:
                             flag = "es";
@@ -40,7 +40,7 @@ namespace ChatBot
                             break;
                     }
 
-                    html += li.Replace("#CONTENT#", "<a class=\"nav-link\" href=\"" + Page.ResolveClientUrl("~/Content/Img/") + "\"><i class=\"fas fa-user\"></i>&nbsp;&nbsp;" + Framework.Helpers.Session.SessionUser.Nombre + ", " + Framework.Helpers.Session.SessionUser.Apellido + "</a>");
+                    html += li.Replace("#CONTENT#", "<a class=\"nav-link\" href=\"" + Page.ResolveClientUrl("~/Content/Img/") + "\"><i class=\"fas fa-user\"></i>&nbsp;&nbsp;" + Framework.Helpers.Session.User.Nombre + ", " + Framework.Helpers.Session.User.Apellido + "</a>");
                     html += "<li><a class=\"nav-link\"><img src=\"" + Page.ResolveClientUrl("~/Content/Img/") + "" + flag + ".png\" /></a></li>";
                     html += li.Replace("#CONTENT#", "<a class=\"nav-link\" href=\"" + Page.ResolveClientUrl("~/Default.aspx?logout=true") + "\">Sign out</a>");
 

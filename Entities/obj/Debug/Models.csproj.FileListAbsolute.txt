@@ -30,7 +30,6 @@ D:\Projects\Chatbot\Entities\bin\Debug\Framework.pdb
 D:\Projects\Chatbot\Entities\bin\Debug\Newtonsoft.Json.pdb
 D:\Projects\Chatbot\Entities\bin\Debug\Newtonsoft.Json.xml
 D:\Projects\Chatbot\Entities\obj\Debug\Models.csprojAssemblyReference.cache
-D:\Projects\Chatbot\Entities\obj\Debug\Models.csproj.CoreCompileInputs.cache
 D:\Projects\Chatbot\Entities\obj\Debug\Models.csproj.CopyComplete
 D:\Projects\Chatbot\Entities\obj\Debug\Entities.dll
 D:\Projects\Chatbot\Entities\obj\Debug\Entities.pdb
@@ -49,3 +48,4 @@ C:\Facu\chatbot\Entities\obj\Debug\Models.csproj.CopyComplete
 C:\Facu\chatbot\Entities\obj\Debug\Entities.dll
 C:\Facu\chatbot\Entities\obj\Debug\Entities.pdb
 C:\Facu\chatbot\Entities\bin\Debug\log4net.dll
+D:\Projects\Chatbot\Entities\bin\Debug\log4net.dll

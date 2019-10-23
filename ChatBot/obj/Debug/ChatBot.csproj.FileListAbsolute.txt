@@ -273,7 +273,6 @@ D:\Projects\Chatbot\ChatBot\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\Projects\Chatbot\ChatBot\bin\Microsoft.AI.WindowsServer.xml
 D:\Projects\Chatbot\ChatBot\bin\Microsoft.AI.Web.xml
 D:\Projects\Chatbot\ChatBot\obj\Debug\ChatBot.csprojAssemblyReference.cache
-D:\Projects\Chatbot\ChatBot\obj\Debug\ChatBot.csproj.CoreCompileInputs.cache
 D:\Projects\Chatbot\ChatBot\obj\Debug\ChatBot.csproj.CopyComplete
 D:\Projects\Chatbot\ChatBot\obj\Debug\ChatBot.dll
 D:\Projects\Chatbot\ChatBot\obj\Debug\ChatBot.pdb
