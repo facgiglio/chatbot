@@ -2,78 +2,45 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-        body {
-            padding-top:4.2rem;
-		    padding-bottom:4.2rem;
-		    background: #ebebeb;
-        }
-        a {
-            text-decoration:none !important;
-        }
-        h1,h2,h3{
-            font-family: 'Kaushan Script', cursive;
-        }
-        .myform{
-		    position: relative;
-		    display: -ms-flexbox;
-		    display: flex;
-		    padding: 1rem;
-		    -ms-flex-direction: column;
-		    flex-direction: column;
-		    width: 100%;
-		    pointer-events: auto;
-		    background-color: #fff;
-		    background-clip: padding-box;
-		    border: 1px solid rgba(0,0,0,.2);
-		    border-radius: 1.1rem;
-		    outline: 0;
-		    max-width: 500px;
-            padding: 40px 40px;
-		}
-        .mybtn{
-            border-radius:50px;
-        }
-        
-         form .error {
-            color: #ff0000;
-        }
-    </style>
     <div class="row" style="margin-top:50px;">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <div id="first">
-                <div class="myform form">
-                    <div class="logo mb-3">
-                        <div class="col-md-12 text-center">
-                            <h1>Login</h1>
+            <form>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Log-In</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="txtEmail" placeholder="Email">
+                                    </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Password</label>
+                                    <input type="password" name="password" id="txtPassword" class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+                                </div>
+                                <div class="checkbox mb-3">
+                                    <label>
+                                        <input type="checkbox" value="remember-me" id="rememberMe">
+                                        Remember me
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
+                                </div>
+                                <div class="col-md-12 text-center ">
+                                    <button id="btnLogIn" type="submit" class="btn btn-primary btn-lg">LOGIN</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="txtEmail" placeholder="Email">
-                          </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Password</label>
-                            <input type="password" name="password" id="txtPassword" class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
-                        </div>
-                        <div class="checkbox mb-3">
-                            <label>
-                                <input type="checkbox" value="remember-me" id="rememberMe">
-                                Remember me
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
-                        </div>
-                        <div class="col-md-12 text-center ">
-                            <button id="btnLogIn" type="submit" class="btn btn-block mybtn btn-primary">LOGIN</button>
-                        </div>
-                    </form>
+                    <div class="col-md-8">
+                        <img src="Content/img/chatbot_login.png" class="img-responsive" alt="Responsive image">
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
+
     </div> 
     <script>
         $(document).ready(function () {

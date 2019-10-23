@@ -9,17 +9,28 @@ namespace Rules
 {
     public class Frase
     {
-        Mapper<Entities.Frase> mapper = new Mapper<Entities.Frase>();
+        Mapper<Models.Frase> mapper = new Mapper<Models.Frase>();
 
         #region Insertar
-        public void Insertar(Entities.Frase frase)
+        public void Insertar(Models.Frase frase)
         {
+            var cliente = new Models.Cliente();
+            var cliMapper = new Mapper<Models.Cliente>();
+
+            //Primero inserto la frase para luego relacionarla.
             mapper.Insert(frase);
+
+            cliente.IdCliente = Session.User.IdCliente;
+            cliente.Frases.Add(frase);
+
+            cliMapper.InsertRelation(cliente);
+            
+            
         }
         #endregion
 
         #region Modificar
-        public void Modificar(Entities.Frase frase)
+        public void Modificar(Models.Frase frase)
         {
             //Actualizo el usuario
             mapper.Update(frase);
@@ -39,7 +50,7 @@ namespace Rules
 
         #region Obtener
         
-        public Entities.Frase ObtenerPorId(int Id)
+        public Models.Frase ObtenerPorId(int Id)
         {
             try
             {
@@ -57,8 +68,23 @@ namespace Rules
         {
             return mapper.GetList(null);
         }
-        
-        public Entities.Frase ObtenerPoryRazonSocial(string RazonSocial)
+
+
+        public List<object> ObtenerListadoPorCliente()
+        {
+            try
+            {
+                var mapperFrases = new MapperMany<Models.Cliente, Models.Frase>();
+                
+                return mapperFrases.GetListObjectMany(Session.User.IdCliente); ;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
+        public Models.Frase ObtenerPoryRazonSocial(string RazonSocial)
         {
             SqlParameter[] parameters = { new SqlParameter("@RazonSocial", RazonSocial) };
 

@@ -17,6 +17,10 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div >
+                                <label id="lblCliente" for="ddlCliente" class="col-form-label" runat="server">Idioma:</label>
+                                <asp:DropDownList ID="ddlCliente" runat="server" CssClass="form-control form-control-sm" />
+                            </div>
+                            <div >
                                 <label id="lblEmail" for="txtEmail" class="col-form-label" runat="server">Email:</label>
                                 <input id="txtEmail" type="text" class="form-control form-control-sm">
                             </div>
@@ -107,6 +111,7 @@
             ClearData();
 
             $("#hddId").val(Usuario.IdUsuario);
+            $("#ddlCliente").val(Usuario.IdCliente);
             $("#txtEmail").val(Usuario.Email);
             $("#txtContrasena").val(Usuario.Contrasena);
             $("#txtNombre").val(Usuario.Nombre);
@@ -116,11 +121,11 @@
             $.each(Usuario.Roles, function (i, rol) {
                 $("#grdRoles #chk_" + rol.IdRol).prop('checked', true)
             });            
-            
         }
 
         function ClearData() {
             $("#hddId").val(0);
+            $("#ddlCliente").val(0);
             $("#txtEmail").val("");
             $("#txtContrasena").val();
             $("#txtNombre").val("");
@@ -143,6 +148,7 @@
             
             var usuario = {
                 "IdUsuario": $("#hddId").val(),
+                "IdCliente": $("#ddlCliente").val(),
                 "Email": $("#txtEmail").val(),
                 "Contrasena": $("#txtContrasena").val(),
                 "Nombre": $("#txtNombre").val(),
@@ -164,9 +170,6 @@
                     showMessage("#exampleModal", error.responseJSON.Message, 5000, "danger");
                 }
             });
-            
-
-
         }
         //--||-----------------------------------------------------------------------------------||--//
     </script>

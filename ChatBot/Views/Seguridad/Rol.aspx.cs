@@ -12,7 +12,6 @@ namespace ChatBot
 {
     public partial class Rol : Page
     {
-        //private readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         const string _page = "Rol.aspx";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -35,13 +34,6 @@ namespace ChatBot
             grdRol.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate("cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
             grdRol.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate("cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
             grdRol.DataSource = new Rules.Rol().GetList(descripcion);
-
-
-            grdPermiso.AddColumn(MultiLanguage.GetTranslate(_page, "grdId"), ColumnType.Data, "IdPermiso", "", true, false);
-            grdPermiso.AddColumn(MultiLanguage.GetTranslate(_page, "grdId"), ColumnType.CheckBox, "IdPermiso", "IdPermiso", false, true);
-            grdPermiso.AddColumn(MultiLanguage.GetTranslate(_page, "grdDescripcion"), ColumnType.Data, "Descripcion", "", true, true);
-            grdPermiso.Config.Condense = true;
-            grdPermiso.DataSource = new Rules.Permiso().GetList("");
 
             SetLanguage();
         }

@@ -9,10 +9,10 @@ namespace Rules
 {
     public class Cliente
     {
-        Mapper<Entities.Cliente> mapper = new Mapper<Entities.Cliente>();
+        Mapper<Models.Cliente> mapper = new Mapper<Models.Cliente>();
 
         #region Insertar
-        public void Insertar(Entities.Cliente cliente)
+        public void Insertar(Models.Cliente cliente)
         {
             mapper.Insert(cliente);
 
@@ -21,7 +21,7 @@ namespace Rules
         #endregion
 
         #region Modificar
-        public void Modificar(Entities.Cliente cliente)
+        public void Modificar(Models.Cliente cliente)
         {
             //Actualizo el usuario
             mapper.Update(cliente);
@@ -41,7 +41,7 @@ namespace Rules
 
         #region Obtener
         
-        public Entities.Cliente ObtenerPorId(int Id)
+        public Models.Cliente ObtenerPorId(int Id)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace Rules
             return mapper.GetList(null);
         }
         
-        public Entities.Cliente ObtenerPoryRazonSocial(string RazonSocial)
+        public Models.Cliente ObtenerPoryRazonSocial(string RazonSocial)
         {
             List<SqlParameter> parameters = new List<SqlParameter>() {
                 new SqlParameter("@RazonSocial", RazonSocial)

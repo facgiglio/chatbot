@@ -43,12 +43,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class=".col-sm-12">
-                            <CW:Grid runat="server" ID="grdPermiso" />
-                        </div>
-                    </div>
-
                     <input type="hidden" id="hddModo" value="alta" />
                     <input type="hidden" id="hddId" value="0" />
                 </div>
@@ -114,10 +108,6 @@
 
             $("#hddId").val(Rol.IdRol);
             $("#txtDescripcion").val(Rol.Descripcion);
-
-            $.each(Rol.Permisos, function (i, permiso) {
-                $("#grdPermiso #chk_" + permiso.IdPermiso).prop('checked', true)
-            });            
         }
 
         function ClearData() {
@@ -130,17 +120,9 @@
         }
 
         function Accion() {
-            var permisos = [];
-
-            $("#grdPermiso input:checked").each(function () {
-                var permiso = { IdPermiso: $(this).attr("id").replace("chk_", ""), Descripcion: "" };
-                permisos.push(permiso);
-            });            
-
             var rol = {
                 "IdRol": $("#hddId").val(),
-                "Descripcion": $("#txtDescripcion").val(),
-                "Permisos" : permisos
+                "Descripcion": $("#txtDescripcion").val()
             }
 
             $.ajax({

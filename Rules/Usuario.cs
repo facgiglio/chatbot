@@ -86,8 +86,11 @@ namespace Rules
 
             //Actualizo el usuario
             mapper.Update(usuario);
+
+            /*
             //Guardo el usuario modificado en la sessión.
             Framework.Helpers.Session.AddSessionUser(usuario);
+            */
         }
         #endregion
 
@@ -133,11 +136,16 @@ namespace Rules
         
         public Framework.Models.Usuario GetByUsuario(string Usuario)
         {
+            MapperMany<Framework.Models.Usuario, Framework.Models.Rol> mapperRol = new MapperMany<Framework.Models.Usuario, Framework.Models.Rol>();
+
             List<SqlParameter> parameters = new List<SqlParameter>() {
                 new SqlParameter("@Email", Usuario)
             };
 
-            return mapper.GetByWhere(parameters.ToArray());
+            var usuario = mapper.GetByWhere(parameters.ToArray());
+            usuario.Roles = mapperRol.GetListEntityMany(usuario.IdUsuario);
+
+            return usuario;
         }
         
         #endregion

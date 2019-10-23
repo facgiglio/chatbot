@@ -9,17 +9,17 @@ namespace Rules
 {
     public class Palabra
     {
-        Mapper<Entities.Palabra> mapper = new Mapper<Entities.Palabra>();
+        Mapper<Models.Palabra> mapper = new Mapper<Models.Palabra>();
 
         #region Insertar
-        public void Insertar(Entities.Palabra palabra)
+        public void Insertar(Models.Palabra palabra)
         {
             mapper.Insert(palabra);
         }
         #endregion
 
         #region Modificar
-        public void Modificar(Entities.Palabra palabra)
+        public void Modificar(Models.Palabra palabra)
         {
             //Actualizo el usuario
             mapper.Update(palabra);
@@ -39,7 +39,7 @@ namespace Rules
 
         #region Obtener
         
-        public Entities.Palabra ObtenerPorId(int Id)
+        public Models.Palabra ObtenerPorId(int Id)
         {
             try
             {
@@ -62,20 +62,20 @@ namespace Rules
             return mapper.GetList(null);
         }
 
-        public List<Entities.Palabra> ObtenerListadoEntity()
+        public List<Models.Palabra> ObtenerListadoEntity()
         {
             return mapper.GetListEntity(null);
         }
 
         #endregion
 
-        public Entities.Palabra AnalizarPalabras(string texto)
+        public Models.Palabra AnalizarPalabras(string texto)
         {
 
             return null;
         }
 
-        public List<Entities.Palabra> ConsultarmatrixEngine(Entities.Palabra palabra)
+        public List<Models.Palabra> ConsultarmatrixEngine(Models.Palabra palabra)
         {
 
             return null;

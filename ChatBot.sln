@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rules", "Rules\Rules.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "..\Framework\Framework.csproj", "{A2D6CDCD-735C-4EBC-8794-70BD8B3A0D16}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{F60BDE63-4DF6-4B20-8945-AA61805E4AAB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,12 +33,6 @@ Global
 		{A2D6CDCD-735C-4EBC-8794-70BD8B3A0D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2D6CDCD-735C-4EBC-8794-70BD8B3A0D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2D6CDCD-735C-4EBC-8794-70BD8B3A0D16}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F60BDE63-4DF6-4B20-8945-AA61805E4AAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F60BDE63-4DF6-4B20-8945-AA61805E4AAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F60BDE63-4DF6-4B20-8945-AA61805E4AAB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{F60BDE63-4DF6-4B20-8945-AA61805E4AAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F60BDE63-4DF6-4B20-8945-AA61805E4AAB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F60BDE63-4DF6-4B20-8945-AA61805E4AAB}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -25,16 +25,13 @@ namespace ChatBot
             if (!Security.IsAuthorized(_page, Constantes.Action.Listado))
                 Response.Redirect(Page.ResolveClientUrl("~/Views/LogIn.aspx"));
             */
-            XmlConfigurator.Configure();
-
-            this.log.Info("Inicio de la página");
 
             grdFrase.AddColumn(MultiLanguage.GetTranslate(_page, "grdId"), ColumnType.Data, "IdFrase", "", true, false);
             grdFrase.AddColumn(MultiLanguage.GetTranslate(_page, "lblDescripcion"), ColumnType.Data, "Descripcion", "", false, true);
             grdFrase.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate(_page, "cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
             grdFrase.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate(_page, "cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
             grdFrase.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate(_page, "cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
-            grdFrase.DataSource = new Rules.Frase().ObtenerListado();
+            grdFrase.DataSource = new Rules.Frase().ObtenerListadoPorCliente();
 
             SetLanguage();
         }
@@ -54,14 +51,14 @@ namespace ChatBot
         }
 
         [WebMethod]
-        public static void Insertar(Entities.Frase frase)
+        public static void Insertar(Models.Frase frase)
         {
             var br = new Rules.Frase();
             br.Insertar(frase);
         }
 
         [WebMethod]
-        public static void Modificar(Entities.Frase frase)
+        public static void Modificar(Models.Frase frase)
         {
             try
             {
@@ -75,14 +72,14 @@ namespace ChatBot
         }
 
         [WebMethod]
-        public static void Eliminar(Entities.Frase frase)
+        public static void Eliminar(Models.Frase frase)
         {
             var br = new Rules.Frase();
             br.Eliminar(frase.IdFrase);
         }
 
         [WebMethod]
-        public static Entities.Frase Obtener(int Id)
+        public static Models.Frase Obtener(int Id)
         {
             try
             {
