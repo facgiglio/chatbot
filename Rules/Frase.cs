@@ -84,14 +84,15 @@ namespace Rules
 
         public string BuscarFrase(List<string> frases)
         {
-            SqlParameter[] parameters = {new SqlParameter("@Frases", String.Join("|", frases))};
+            SqlParameter[] paramExacta = {new SqlParameter("@Frases", String.Join("|", frases))};
             //Obtengo primero por la frase exacta.
-            var respuestas = mapper.GetListEntity("BuscarFraseExacta", parameters);
+            var respuestas = mapper.GetListEntity("BuscarFraseExacta", paramExacta);
 
             if (respuestas.Count == 0)
             {
+                SqlParameter[] paramAprox = { new SqlParameter("@Frases", String.Join("|", frases)) };
                 //No no tengo la frase exacta, obtengo por un aproximado.
-                respuestas = mapper.GetListEntity("BuscarFraseAproximada", parameters);
+                respuestas = mapper.GetListEntity("BuscarFraseAproximada", paramAprox);
 
                 if (respuestas.Count == 0)
                 {
