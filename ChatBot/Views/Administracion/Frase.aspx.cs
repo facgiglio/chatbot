@@ -16,7 +16,7 @@ namespace ChatBot
     public partial class Frase : Page
     {
         private readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        const string _page = "Frase.aspx";
+        const string _page = "Frase";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,9 +28,9 @@ namespace ChatBot
 
             grdFrase.AddColumn(MultiLanguage.GetTranslate(_page, "grdId"), ColumnType.Data, "IdFrase", "", true, false);
             grdFrase.AddColumn(MultiLanguage.GetTranslate(_page, "lblDescripcion"), ColumnType.Data, "Descripcion", "", false, true);
-            grdFrase.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate(_page, "cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
-            grdFrase.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate(_page, "cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
-            grdFrase.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate(_page, "cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
+            grdFrase.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate("cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
+            grdFrase.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate("cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
+            grdFrase.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate("cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
             grdFrase.DataSource = new Rules.Frase().ObtenerListadoPorCliente();
 
             SetLanguage();
@@ -40,11 +40,11 @@ namespace ChatBot
         {
             tituloPrincipal.InnerHtml = MultiLanguage.GetTranslate(_page, "tituloPrincipal");
             
-            btnCancelar.InnerHtml = MultiLanguage.GetTranslate(_page, "btnCancelar");
-            btnGuardar.InnerHtml = MultiLanguage.GetTranslate(_page, "btnGuardar");
-            lblNuevo.InnerHtml = MultiLanguage.GetTranslate(_page, "lblNuevo");
-            lblFiltrar.InnerHtml = MultiLanguage.GetTranslate(_page, "lblFiltrar");
-            lblRazonSocialFiltrar.InnerHtml = MultiLanguage.GetTranslate(_page, "lblRazonSocial");
+            btnCancelar.InnerHtml = MultiLanguage.GetTranslate("btnCancelar");
+            btnGuardar.InnerHtml = MultiLanguage.GetTranslate("btnGuardar");
+            lblNuevo.InnerHtml = MultiLanguage.GetTranslate("lblNuevo");
+            lblFiltrar.InnerHtml = MultiLanguage.GetTranslate("lblFiltrar");
+            lblDescripcionFiltrar.InnerHtml = MultiLanguage.GetTranslate(_page, "lblDescripcion");
             lblDescripcion.InnerHtml = MultiLanguage.GetTranslate(_page, "lblDescripcion");
             lblRespuesta.InnerHtml = MultiLanguage.GetTranslate(_page, "lblRespuesta");
             lblActivo.InnerHtml = MultiLanguage.GetTranslate(_page, "lblActivo");

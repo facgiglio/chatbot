@@ -29,9 +29,9 @@ namespace ChatBot
             grdMultiIdioma.AddColumn("es", ColumnType.TextBox, "es", "IdEs", true, true);
             grdMultiIdioma.AddColumn("en", ColumnType.TextBox, "en", "IdEn", true, true);
 
-            grdMultiIdioma.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate(_page, "cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
-            grdMultiIdioma.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate(_page, "cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
-            grdMultiIdioma.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate(_page, "cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
+            grdMultiIdioma.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate("cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
+            grdMultiIdioma.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate("cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
+            grdMultiIdioma.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate("cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
 
             grdMultiIdioma.DataSource = new Framework.Rules.MultiLenguaje().GetMultiLanguageList(seccion);
 
@@ -49,19 +49,6 @@ namespace ChatBot
             ddlSeccionFilter.DataTextField = "Descripcion";
             ddlSeccionFilter.DataValueField = "IdSeccion";
             ddlSeccionFilter.DataBind();
-
-            /*
-            grdRoles.AddColumn(MultiLanguage.GetTranslate("Usuario.aspx", "grdId"), ColumnType.Data, "IdRol", "", true, false);
-            grdRoles.AddColumn(MultiLanguage.GetTranslate("Usuario.aspx", "grdId"), ColumnType.CheckBox, "Descripcion", "IdRol", false, true);
-            grdRoles.AddColumn(MultiLanguage.GetTranslate("Usuario.aspx", "grdNombre"), ColumnType.Data, "Descripcion", "", false, true);
-            grdRoles.Config.Condense = true;
-            grdRoles.DataSource = new Rules.Rol().GetList();
-
-            ddlIdioma.DataSource = new Rules.Idioma().GetList();
-            ddlIdioma.DataTextField = "Descripcion";
-            ddlIdioma.DataValueField = "Id";
-            ddlIdioma.DataBind();
-            */
 
             SetLanguage();
         }
@@ -114,10 +101,10 @@ namespace ChatBot
         }
 
         [WebMethod]
-        public static void Eliminar(int Id)
+        public static void Eliminar(Framework.Models.MultiLenguaje multiLanguage)
         {
             var br = new Framework.Rules.MultiLenguaje();
-            br.Eliminar(Id);
+            br.Eliminar(multiLanguage.IdMultiLenguaje);
         }
 
         [WebMethod]

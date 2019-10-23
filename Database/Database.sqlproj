@@ -57,5 +57,33 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Stored Procedures\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\UsuarioRol_2.sql" />
+    <Build Include="dbo\Tables\Usuario_2.sql" />
+    <Build Include="dbo\Tables\Traduccion_2.sql" />
+    <Build Include="dbo\Tables\Seccion_2.sql" />
+    <Build Include="dbo\Tables\Rol_2.sql" />
+    <Build Include="dbo\Tables\Palabra.sql" />
+    <Build Include="dbo\Tables\MultiLenguaje_2.sql" />
+    <Build Include="dbo\Tables\Idioma_2.sql" />
+    <Build Include="dbo\Tables\Frase_2.sql" />
+    <Build Include="dbo\Tables\ClientePalabra.sql" />
+    <Build Include="dbo\Tables\ClienteFrase.sql" />
+    <Build Include="dbo\Tables\Cliente_2.sql" />
+    <Build Include="dbo\Tables\Aprender.sql" />
+    <Build Include="Security\userConn.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="dbo\Stored Procedures\sys_Permissions.sql" />
+    <Build Include="dbo\Stored Procedures\sys_Entity.sql" />
+    <Build Include="dbo\Stored Procedures\ListadoMultiIdioma.sql" />
+    <Build Include="dbo\Stored Procedures\BuscarFraseExacta.sql" />
+    <Build Include="dbo\Stored Procedures\BuscarFraseAproximada.sql" />
+    <Build Include="dbo\Stored Procedures\BuscarFrase.sql" />
+    <Build Include="dbo\Stored Procedures\sys_CheckDatabase.sql" />
   </ItemGroup>
 </Project>

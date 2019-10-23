@@ -26,7 +26,7 @@ namespace ChatBot
                 Response.Redirect(Page.ResolveClientUrl("~/Views/LogIn.aspx"));
             */
             XmlConfigurator.Configure();
-
+            LogicalThreadContext.Properties["IdUser"] = 1;
             this.log.Info("Inicio de la página");
 
             grdCliente.AddColumn(MultiLanguage.GetTranslate(_page, "grdId"), ColumnType.Data, "IdCliente", "", true, false);

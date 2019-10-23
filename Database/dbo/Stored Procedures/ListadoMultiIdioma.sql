@@ -15,5 +15,3 @@ LEFT JOIN Traduccion t	ON t.IdMultiIdioma = m.IdMultiLenguaje
 LEFT JOIN Idioma i		ON i.IdIdioma = t.IdIdioma
 WHERE m.IdSeccion = ISNULL(@IdSeccion, m.IdSeccion)
 GROUP BY m.IdMultiLenguaje, m.Descripcion, s.Descripcion
-
---select * from Idioma

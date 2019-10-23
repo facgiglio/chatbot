@@ -1,9 +1,9 @@
-﻿CREATE procedure sys_Entity
+﻿CREATE procedure [dbo].[sys_Entity]
 	@Table VARCHAR(50)
 as
 
 /*
-sys_Entity 'Cliente'
+sys_Entity 'Frase'
 */
 
 SELECT
@@ -15,6 +15,7 @@ SELECT
 		WHEN 'varchar'	THEN 'string'
 		WHEN 'int'		THEN 'int'
 		when 'datetime' THEN 'datetime'
+		when 'bit'		THEN 'bool'
 	END + ' ' + COLUMN_NAME + '{ get; set; }'
 FROM INFORMATION_SCHEMA.COLUMNS 
 WHERE TABLE_NAME = @Table

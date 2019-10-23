@@ -3,7 +3,7 @@
 <%@ Import Namespace="Framework" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <% const string _page = "Frase.aspx";%>
+    <% const string _page = "Frase";%>
 
     <div class="form-group">
         <div class="row">
@@ -18,9 +18,9 @@
             </div>
         </div>
         <div class="row">
-            <label id="lblRazonSocialFiltrar" runat="server" for="txtRazonSocialFiltrar" class="col-sm-2 col-form-label"></label>
+            <label id="lblDescripcionFiltrar" runat="server" for="lblDescripcionFiltrar" class="col-sm-2 col-form-label"></label>
             <div class="col-sm-3">
-                <input id="txtRazonSocialFiltrar" type="text" class="form-control form-control-sm">
+                <input id="txtDescripcionFiltrar" type="text" class="form-control form-control-sm">
             </div>
         </div> 
     </div>
