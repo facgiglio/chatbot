@@ -23,7 +23,7 @@ namespace Rules
             cliente.IdCliente = Session.User.IdCliente;
             cliente.Frases.Add(frase);
 
-            cliMapper.InsertRelation(cliente);
+            cliMapper.InsertRelation(cliente, "Frase");
             
             
         }

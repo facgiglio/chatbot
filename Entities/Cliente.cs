@@ -21,12 +21,13 @@ namespace Models
         public string Telefono { get; set; }
         [EntityMany("ClienteFrase", "Frase", "IdCliente", "IdFrase")]
         public List<Models.Frase> Frases { get; set; }
-        [EntityMany("ClientePalbra", "Palabra", "IdCliente", "IdPalabra")]
-        public List<Models.Palabra> Palabras { get; set; }
+        [EntityMany("ClientePalabra", "Palabra", "IdCliente", "IdPalabra")]
+        public List<Palabra> Palabras { get; set; }
 
         public Cliente()
         {
-            this.Frases = new List<Models.Frase>();
+            this.Frases = new List<Frase>();
+            this.Palabras = new List<Palabra>();
         }
 
     }

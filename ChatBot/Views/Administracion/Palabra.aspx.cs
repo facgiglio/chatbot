@@ -34,7 +34,7 @@ namespace ChatBot
             grdPalabra.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate("cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
             grdPalabra.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate("cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
             grdPalabra.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate("cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
-            grdPalabra.DataSource = new Rules.Palabra().ObtenerListado();
+            grdPalabra.DataSource = new Rules.Palabra().ObtenerListadoPorCliente();
 
             SetLanguage();
         }
@@ -45,8 +45,8 @@ namespace ChatBot
             
             btnCancelar.InnerHtml = MultiLanguage.GetTranslate("btnCancelar");
             btnGuardar.InnerHtml = MultiLanguage.GetTranslate("btnGuardar");
-            lblNuevo.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblNuevo");
-            lblFiltrar.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblFiltrar");
+            lblNuevo.InnerHtml = MultiLanguage.GetTranslate("lblNuevo");
+            lblFiltrar.InnerHtml = MultiLanguage.GetTranslate("lblFiltrar");
             lblPalabra.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblPalabra");
             lblPalabra1.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblPalabra");
             lblPalabra2.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblPalabra");

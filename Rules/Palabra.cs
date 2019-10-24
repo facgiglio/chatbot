@@ -14,16 +14,27 @@ namespace Rules
         #region Insertar
         public void Insertar(Models.Palabra palabra)
         {
-            var cliente = new Models.Cliente();
-            var cliMapper = new Mapper<Models.Cliente>();
+            var logMessage = "Insertar " + this.GetType().Name + " - Id: " + palabra.IdPalabra.ToString();
 
-            //Primero inserto la frase para luego relacionarla.
-            mapper.Insert(palabra);
+            try
+            {
+                var cliente = new Models.Cliente();
+                var cliMapper = new Mapper<Models.Cliente>();
 
-            cliente.IdCliente = Session.User.IdCliente;
-            cliente.Palabras.Add(palabra);
+                //Primero inserto la frase para luego relacionarla.
+                mapper.Insert(palabra);
 
-            cliMapper.InsertRelation(cliente);
+                cliente.IdCliente = Session.User.IdCliente;
+                cliente.Palabras.Add(palabra);
+
+                //Inserto la relacción entre cliente y palabra.
+                cliMapper.InsertRelation(cliente, "Palabra");
+            }
+            catch (Exception ex)
+            {
+                //Logueo la excepción.
+                Logger.LogException(logMessage + " - Error: " + ex.Message);
+            }
         }
         #endregion
 
@@ -74,6 +85,20 @@ namespace Rules
         public List<Models.Palabra> ObtenerListadoEntity()
         {
             return mapper.GetListEntity(null);
+        }
+
+        public List<object> ObtenerListadoPorCliente()
+        {
+            try
+            {
+                var mapperPalabras = new MapperMany<Models.Cliente, Models.Palabra>();
+
+                return mapperPalabras.GetListObjectMany(Session.User.IdCliente); ;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
         }
 
         #endregion

@@ -15,10 +15,14 @@ namespace Rules
         public Framework.Models.MessageDTO LogIn(string user, string pass)
         {
             var usuario = GetByUsuario(user);
+            var logMessage = "LogIn [User: " + user + "]";
 
             //Controlo que el usuario exista.
             if (usuario == null)
             {
+                //Logueo la acción ejecutada.
+                Logger.LogInfo(logMessage + " - Usuario no encontrado.");
+
                 return new Framework.Models.MessageDTO("Error", "Usuario o contraseña inválidos.");
             }
 
@@ -27,30 +31,34 @@ namespace Rules
                 //Controlo que la constraseña sea la correcta.
                 if (Security.Decrypt(usuario.Contrasena) == pass)
                 {
-                    /*
                     //LogIn exitoso, armo el perfil.
-                    Permiso brPermiso = new Permiso();
-                    usuario.Permisos = brPermiso.ListadoPermiso(usuario.Id);
-                    */
                     Session.AddSessionUser(usuario);
 
+                    //Logueo la acción ejecutada.
+                    Logger.LogInfo(logMessage + " - Welcome.");
+
                     return new Framework.Models.MessageDTO("Success", "LogIn exitoso.");
-                    
                 }
                 else
                 {
+                    //Actualizo la cantidad de intentos.
                     usuario.IntentosFallidos += 1;
                     mapper.Update(usuario);
 
                     if (usuario.IntentosFallidos > 3)
                     {
+                        //Logueo la acción ejecutada.
+                        Logger.LogInfo(logMessage + " - Usuario bloqueado.");
+
                         return new Framework.Models.MessageDTO("Error", "El usuario ha sido bloqueado. Ingrese a recuperar contraseña.");
                     }
                     else
                     {
+                        //Logueo la acción ejecutada.
+                        Logger.LogInfo(logMessage + " - Password incorrecta.");
+
                         return new Framework.Models.MessageDTO("Error", "Usuario o contraseña inválidos.");
                     }
-
                 }
             }
             catch (Exception ex)
