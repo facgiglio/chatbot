@@ -16,7 +16,7 @@ namespace ChatBot
     public partial class Cliente : Page
     {
         private readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        const string _page = "Cliente.aspx";
+        const string _seccion = "Cliente";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,16 +25,14 @@ namespace ChatBot
             if (!Security.IsAuthorized(_page, Constantes.Action.Listado))
                 Response.Redirect(Page.ResolveClientUrl("~/Views/LogIn.aspx"));
             */
-            XmlConfigurator.Configure();
-            LogicalThreadContext.Properties["IdUser"] = 1;
-            this.log.Info("Inicio de la página");
+            Logger.LogInfo("Cliente - Listado");
 
-            grdCliente.AddColumn(MultiLanguage.GetTranslate(_page, "grdId"), ColumnType.Data, "IdCliente", "", true, false);
-            grdCliente.AddColumn(MultiLanguage.GetTranslate(_page, "lblRazonSocial"), ColumnType.Data, "RazonSocial", "", false, true);
-            grdCliente.AddColumn(MultiLanguage.GetTranslate(_page, "lblDireccion"), ColumnType.Data, "Direccion", "", false, true);
-            grdCliente.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate(_page, "cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
-            grdCliente.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate(_page, "cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
-            grdCliente.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate(_page, "cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
+            grdCliente.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdId"), ColumnType.Data, "IdCliente", "", true, false);
+            grdCliente.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblRazonSocial"), ColumnType.Data, "RazonSocial", "", false, true);
+            grdCliente.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblDireccion"), ColumnType.Data, "Direccion", "", false, true);
+            grdCliente.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate(_seccion, "cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
+            grdCliente.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate(_seccion, "cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
+            grdCliente.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate(_seccion, "cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
             grdCliente.DataSource = new Rules.Cliente().ObtenerListado();
 
             SetLanguage();
@@ -42,17 +40,17 @@ namespace ChatBot
 
         private void SetLanguage()
         {
-            tituloPrincipal.InnerHtml = MultiLanguage.GetTranslate(_page, "tituloPrincipal");
+            tituloPrincipal.InnerHtml = MultiLanguage.GetTranslate(_seccion, "tituloPrincipal");
             
-            btnCancelar.InnerHtml = MultiLanguage.GetTranslate(_page, "btnCancelar");
-            btnGuardar.InnerHtml = MultiLanguage.GetTranslate(_page, "btnGuardar");
-            lblNuevo.InnerHtml = MultiLanguage.GetTranslate(_page, "lblNuevo");
-            lblFiltrar.InnerHtml = MultiLanguage.GetTranslate(_page, "lblFiltrar");
-            lblRazonSocialFiltrar.InnerHtml = MultiLanguage.GetTranslate(_page, "lblRazonSocial");
-            lblRazonSocial.InnerHtml = MultiLanguage.GetTranslate(_page, "lblRazonSocial");
-            lblDireccion.InnerHtml = MultiLanguage.GetTranslate(_page, "lblDireccion");
-            lblCodigoPostal.InnerHtml = MultiLanguage.GetTranslate(_page, "lblCodigoPostal");
-            lblTelefono.InnerHtml = MultiLanguage.GetTranslate(_page, "lblTelefono");
+            btnCancelar.InnerHtml = MultiLanguage.GetTranslate(_seccion, "btnCancelar");
+            btnGuardar.InnerHtml = MultiLanguage.GetTranslate(_seccion, "btnGuardar");
+            lblNuevo.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblNuevo");
+            lblFiltrar.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblFiltrar");
+            lblRazonSocialFiltrar.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblRazonSocial");
+            lblRazonSocial.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblRazonSocial");
+            lblDireccion.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblDireccion");
+            lblCodigoPostal.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblCodigoPostal");
+            lblTelefono.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblTelefono");
         }
 
         [WebMethod]

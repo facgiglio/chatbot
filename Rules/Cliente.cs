@@ -14,28 +14,69 @@ namespace Rules
         #region Insertar
         public void Insertar(Models.Cliente cliente)
         {
-            mapper.Insert(cliente);
+            var logMessage = "Insertar " + this.GetType().Name + " - Id: " + cliente.IdCliente.ToString();
 
-            Logger.LogInfo();
+            try
+            {
+                //Inserto la entidad.
+                mapper.Insert(cliente);
+
+                //Logueo la acción ejecutada.
+                Logger.LogInfo(logMessage);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogException(logMessage + " - Error: " + ex.Message);
+            }
         }
         #endregion
 
         #region Modificar
         public void Modificar(Models.Cliente cliente)
         {
-            //Actualizo el usuario
-            mapper.Update(cliente);
+            var logMessage = "Modificar " + this.GetType().Name + " - Id: " + cliente.IdCliente.ToString();
+
+            try
+            {
+                //Actualizo el usuario
+                mapper.Update(cliente);
+
+                //Logueo 
+                Logger.LogInfo(logMessage);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogException(logMessage + " - Error: " + ex.Message);
+
+                throw (ex);
+            }
         }
         #endregion
 
         #region Eliminar
         public void Eliminar(int Id)
         {
-            List<SqlParameter> parameters = new List<SqlParameter>() {
-                new SqlParameter("@IdCliente", Id)
-            };
+            var logMessage = "Eliminar " + this.GetType().Name + " - Id: " + Id.ToString();
 
-            mapper.Delete(parameters.ToArray());
+            try
+            {
+                List<SqlParameter> parameters = new List<SqlParameter>() {
+                    new SqlParameter("@IdCliente", Id)
+                };
+
+                mapper.Delete(parameters.ToArray());
+
+                //Logueo 
+                Logger.LogInfo(logMessage);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogException(logMessage + " - Error: " + ex.Message);
+
+                throw (ex);
+            }
+
+            
         }
         #endregion
 

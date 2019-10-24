@@ -3,7 +3,7 @@
 <%@ Import Namespace="Framework" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <% const string _page = "MultiIdioma.aspx";%>
+    <% const string _seccion = "MultiIdioma";%>
 
     <div class="form-group">
         <div class="row">
@@ -56,6 +56,10 @@
     </div>
 
     <script type="text/javascript">
+        const tituloNuevo = '<%: MultiLanguage.GetTranslate(_seccion, "tituloNuevo")%>';
+        const tituloActualizar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloActualizar")%>';
+        const tituloEliminar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloEliminar")%>';
+
         $( document ).ready(function() {
             $("table input").change(function () {
                 
@@ -111,15 +115,15 @@
                 case "@New":
                     ClearData();
                     $("#ddlSeccion").val($("#ddlSeccionFilter").val());
-                    title = 'Crear nueva MultiIdioma';
+                    title = tituloNuevo;
                     break;
                 case "@Upd":
                     Get();
-                    title = 'Actualizar MultiIdioma';
+                    title = tituloActualizar;
                     break;
                 case "@Del":
                     Get();
-                    title = 'Eliminar MultiIdioma';
+                    title = tituloEliminar;
                     break;
             }
             

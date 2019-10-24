@@ -3,7 +3,7 @@
 <%@ Import Namespace="Framework" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <% const string _page = "Palabra.aspx";%>
+    <% const string _seccion = "Palabra";%>
 
     <div class="form-group">
         <div class="row">
@@ -85,15 +85,15 @@
             switch (mode) {
                 case "@New":
                     ClearData();
-                    title = '<%: MultiLanguage.GetTranslate(_page, "tituloNuevoPalabra")%>';
+                    title = '<%: MultiLanguage.GetTranslate(_seccion, "tituloNuevoPalabra")%>';
                     break;
                 case "@Upd":
                     Get(grdPalabra);
-                    title = '<%: MultiLanguage.GetTranslate(_page, "tituloActualizarPalabra")%>';
+                    title = '<%: MultiLanguage.GetTranslate(_seccion, "tituloActualizarPalabra")%>';
                     break;
                 case "@Del":
                     Get(grdPalabra);
-                    title = '<%: MultiLanguage.GetTranslate(_page, "tituloEliminarPalabra")%>';
+                    title = '<%: MultiLanguage.GetTranslate(_seccion, "tituloEliminarPalabra")%>';
                     break;
             }
 

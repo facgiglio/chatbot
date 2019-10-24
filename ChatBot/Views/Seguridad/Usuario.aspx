@@ -1,7 +1,10 @@
 ﻿<%@ Page Title="Listado de Usuario" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Usuario.aspx.cs" Inherits="ChatBot.Usuario" %>
 <%@ Register TagPrefix="CW" Namespace="Framework.WebControls" Assembly="Framework" %>
+<%@ Import Namespace="Framework" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <% const string _seccion = "Usuario";%>
+
     <h2><%: Title %>.</h2>
     
     <CW:Grid runat="server" ID="grdUsuario" />
@@ -59,6 +62,10 @@
     </div>
 
     <script type="text/javascript">
+        const tituloNuevo = '<%: MultiLanguage.GetTranslate(_seccion, "tituloNuevo")%>';
+        const tituloActualizar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloActualizar")%>';
+        const tituloEliminar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloEliminar")%>';
+
         $(document).ready(function () {});
 
         //--||-----------------------------------------------------------------------------------||--//
@@ -77,15 +84,15 @@
             switch (mode) {
                 case "@New":
                     ClearData();
-                    title = 'Crear Usuario';
+                    title = tituloNuevo;
                     break;
                 case "@Upd":
                     Get(grdUsuario);
-                    title = 'Actualizar Usuario';
+                    title = tituloActualizar;
                     break;
                 case "@Del":
                     Get(grdUsuario);
-                    title = 'Eliminar Usuario';
+                    title = tituloEliminar;
                     break;
             }
 

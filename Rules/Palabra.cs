@@ -14,7 +14,16 @@ namespace Rules
         #region Insertar
         public void Insertar(Models.Palabra palabra)
         {
+            var cliente = new Models.Cliente();
+            var cliMapper = new Mapper<Models.Cliente>();
+
+            //Primero inserto la frase para luego relacionarla.
             mapper.Insert(palabra);
+
+            cliente.IdCliente = Session.User.IdCliente;
+            cliente.Palabras.Add(palabra);
+
+            cliMapper.InsertRelation(cliente);
         }
         #endregion
 

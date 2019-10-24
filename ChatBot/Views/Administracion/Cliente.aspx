@@ -3,7 +3,7 @@
 <%@ Import Namespace="Framework" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <% const string _section = "Cliente.aspx";%>
+    <% const string _seccion = "Cliente";%>
 
     <div class="form-group">
         <div class="row">
@@ -69,9 +69,9 @@
     </div>
 
     <script type="text/javascript">
-        const tituloNuevo = '<%: MultiLanguage.GetTranslate(_section, "tituloNuevo")%>';
-        const tituloActualizar = '<%: MultiLanguage.GetTranslate(_section, "tituloActualizar")%>';
-        const tituloEliminar = '<%: MultiLanguage.GetTranslate(_section, "tituloEliminar")%>';
+        const tituloNuevo = '<%: MultiLanguage.GetTranslate(_seccion, "tituloNuevo")%>';
+        const tituloActualizar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloActualizar")%>';
+        const tituloEliminar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloEliminar")%>';
 
         $(document).ready(function () {});
 
@@ -170,7 +170,7 @@
             var errorMessage = "";
 
             if (entity.RazonSocial == "") {
-                errorMessage += '<%:MultiLanguage.GetTranslate(_section, "lblRazonSocial") + ": "%>';
+                errorMessage += '<%:MultiLanguage.GetTranslate(_seccion, "lblRazonSocial") + ": "%>';
                 errorMessage += '<%:MultiLanguage.GetTranslate("errorVacioString")%>';
             }
 

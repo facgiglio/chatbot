@@ -16,7 +16,7 @@ namespace ChatBot
     public partial class Palabra : Page
     {
         private readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        const string _page = "Palabra.aspx";
+        const string _seccion = "Palabra";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,13 +27,13 @@ namespace ChatBot
             */
             XmlConfigurator.Configure();
 
-            grdPalabra.AddColumn(MultiLanguage.GetTranslate(_page, "grdId"), ColumnType.Data, "IdPalabra", "", true, false);
-            grdPalabra.AddColumn(MultiLanguage.GetTranslate(_page, "lblPalabra"), ColumnType.Data, "Palabra1", "", false, true);
-            grdPalabra.AddColumn(MultiLanguage.GetTranslate(_page, "lblPalabra"), ColumnType.Data, "Palabra2", "", false, true);
-            grdPalabra.AddColumn(MultiLanguage.GetTranslate(_page, "lblPalabra"), ColumnType.Data, "Palabra3", "", false, true);
-            grdPalabra.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate(_page, "cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
-            grdPalabra.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate(_page, "cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
-            grdPalabra.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate(_page, "cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
+            grdPalabra.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdId"), ColumnType.Data, "IdPalabra", "", true, false);
+            grdPalabra.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblPalabra"), ColumnType.Data, "Palabra1", "", false, true);
+            grdPalabra.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblPalabra"), ColumnType.Data, "Palabra2", "", false, true);
+            grdPalabra.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblPalabra"), ColumnType.Data, "Palabra3", "", false, true);
+            grdPalabra.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate("cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
+            grdPalabra.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate("cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
+            grdPalabra.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate("cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
             grdPalabra.DataSource = new Rules.Palabra().ObtenerListado();
 
             SetLanguage();
@@ -41,17 +41,17 @@ namespace ChatBot
 
         private void SetLanguage()
         {
-            tituloPrincipal.InnerHtml = MultiLanguage.GetTranslate(_page, "tituloPrincipal");
+            tituloPrincipal.InnerHtml = MultiLanguage.GetTranslate(_seccion, "tituloPrincipal");
             
-            btnCancelar.InnerHtml = MultiLanguage.GetTranslate(_page, "btnCancelar");
-            btnGuardar.InnerHtml = MultiLanguage.GetTranslate(_page, "btnGuardar");
-            lblNuevo.InnerHtml = MultiLanguage.GetTranslate(_page, "lblNuevo");
-            lblFiltrar.InnerHtml = MultiLanguage.GetTranslate(_page, "lblFiltrar");
-            lblPalabra.InnerHtml = MultiLanguage.GetTranslate(_page, "lblPalabra");
-            lblPalabra1.InnerHtml = MultiLanguage.GetTranslate(_page, "lblPalabra");
-            lblPalabra2.InnerHtml = MultiLanguage.GetTranslate(_page, "lblPalabra");
-            lblPalabra3.InnerHtml = MultiLanguage.GetTranslate(_page, "lblPalabra");
-            lblRespuesta.InnerHtml = MultiLanguage.GetTranslate(_page, "lblRespuesta");
+            btnCancelar.InnerHtml = MultiLanguage.GetTranslate("btnCancelar");
+            btnGuardar.InnerHtml = MultiLanguage.GetTranslate("btnGuardar");
+            lblNuevo.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblNuevo");
+            lblFiltrar.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblFiltrar");
+            lblPalabra.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblPalabra");
+            lblPalabra1.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblPalabra");
+            lblPalabra2.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblPalabra");
+            lblPalabra3.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblPalabra");
+            lblRespuesta.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblRespuesta");
         }
 
         [WebMethod]

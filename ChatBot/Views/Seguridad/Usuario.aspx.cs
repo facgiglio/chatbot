@@ -13,7 +13,7 @@ namespace ChatBot
 {
     public partial class Usuario : Page
     {
-        const string _page = "Usuario.aspx";
+        const string _seccion = "Usuario.aspx";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,18 +21,18 @@ namespace ChatBot
             if (!Security.IsAuthorized((int)Constantes.Roles.Usuario))
                 Response.Redirect(Page.ResolveClientUrl("~/LogIn.aspx"));
             
-            grdUsuario.AddColumn(MultiLanguage.GetTranslate(_page, "grdId"), ColumnType.Data, "IdUsuario", "", true, false);
-            grdUsuario.AddColumn(MultiLanguage.GetTranslate(_page, "grdNombre"), ColumnType.Data, "Nombre", "", false, true);
-            grdUsuario.AddColumn(MultiLanguage.GetTranslate(_page, "grdApellido"), ColumnType.Data, "Apellido", "", false, true);
-            grdUsuario.AddColumn(MultiLanguage.GetTranslate(_page, "grdEmail"), ColumnType.Data, "Email", "", false, true);
+            grdUsuario.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdId"), ColumnType.Data, "IdUsuario", "", true, false);
+            grdUsuario.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdNombre"), ColumnType.Data, "Nombre", "", false, true);
+            grdUsuario.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdApellido"), ColumnType.Data, "Apellido", "", false, true);
+            grdUsuario.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdEmail"), ColumnType.Data, "Email", "", false, true);
             grdUsuario.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate("cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
             grdUsuario.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate("cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
             grdUsuario.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate("cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
             grdUsuario.DataSource = new Rules.Usuario().GetList();
 
-            grdRoles.AddColumn(MultiLanguage.GetTranslate(_page, "grdId"), ColumnType.Data, "IdRol", "", true, false);
-            grdRoles.AddColumn(MultiLanguage.GetTranslate(_page, "grdId"), ColumnType.CheckBox, "Descripcion", "IdRol", false, true);
-            grdRoles.AddColumn(MultiLanguage.GetTranslate(_page, "grdNombre"), ColumnType.Data, "Descripcion", "", false, true);
+            grdRoles.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdId"), ColumnType.Data, "IdRol", "", true, false);
+            grdRoles.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdId"), ColumnType.CheckBox, "Descripcion", "IdRol", false, true);
+            grdRoles.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdNombre"), ColumnType.Data, "Descripcion", "", false, true);
             grdRoles.Config.Condense = true;
             grdRoles.DataSource = new Rules.Rol().GetList("");
 
@@ -55,13 +55,13 @@ namespace ChatBot
             tituloPrincipal.InnerHtml = MultiLanguage.GetTranslate(_page, "tituloPrincipal");
             tituloSecundario.InnerHtml = MultiLanguage.GetTranslate(_page, "tituloSecundario");
             */
-            lblCliente.InnerHtml = MultiLanguage.GetTranslate(_page, "lblCliente");
-            btnCancelar.InnerHtml = MultiLanguage.GetTranslate(_page, "btnCancelar");
-            btnGuardar.InnerHtml = MultiLanguage.GetTranslate(_page, "btnGuardar");
-            lblEmail.InnerHtml = MultiLanguage.GetTranslate(_page, "lblEmail");
-            lblNombre.InnerHtml = MultiLanguage.GetTranslate(_page, "lblNombre");
-            lblApellido.InnerHtml = MultiLanguage.GetTranslate(_page, "lblApellido");
-            lblIdioma.InnerHtml = MultiLanguage.GetTranslate(_page, "lblIdioma");
+            lblCliente.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblCliente");
+            btnCancelar.InnerHtml = MultiLanguage.GetTranslate(_seccion, "btnCancelar");
+            btnGuardar.InnerHtml = MultiLanguage.GetTranslate(_seccion, "btnGuardar");
+            lblEmail.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblEmail");
+            lblNombre.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblNombre");
+            lblApellido.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblApellido");
+            lblIdioma.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblIdioma");
         }
 
         [WebMethod]

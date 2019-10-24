@@ -13,7 +13,7 @@ namespace ChatBot
 {
     public partial class MultiIdioma : Page
     {
-        const string _page = "MultiIdioma.aspx";
+        const string _seccion = "MultiIdioma";
         protected void Page_Load(object sender, EventArgs e)
         {
             int seccion = 0;
@@ -24,8 +24,8 @@ namespace ChatBot
             }
 
             grdMultiIdioma.AddColumn("#", ColumnType.Data, "IdMultiLenguaje", "", true, false);
-            grdMultiIdioma.AddColumn(MultiLanguage.GetTranslate(_page, "grdSeccion"), ColumnType.Data, "Seccion", "", true, true);
-            grdMultiIdioma.AddColumn(MultiLanguage.GetTranslate(_page, "grdMultiIdioma"), ColumnType.Data, "Descripcion", "", true, true);
+            grdMultiIdioma.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdSeccion"), ColumnType.Data, "Seccion", "", true, true);
+            grdMultiIdioma.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdMultiIdioma"), ColumnType.Data, "Descripcion", "", true, true);
             grdMultiIdioma.AddColumn("es", ColumnType.TextBox, "es", "IdEs", true, true);
             grdMultiIdioma.AddColumn("en", ColumnType.TextBox, "en", "IdEn", true, true);
 
@@ -55,19 +55,19 @@ namespace ChatBot
 
         private void SetLanguage()
         {
-            tituloPrincipal.InnerHtml = MultiLanguage.GetTranslate(_page, "tituloPrincipal");
-            tituloSeccion.InnerHtml = MultiLanguage.GetTranslate(_page, "tituloSeccion");
+            tituloPrincipal.InnerHtml = MultiLanguage.GetTranslate(_seccion, "tituloPrincipal");
+            tituloSeccion.InnerHtml = MultiLanguage.GetTranslate(_seccion, "tituloSeccion");
 
-            lblSeccionFiltrar.InnerHtml = MultiLanguage.GetTranslate(_page, "lblSeccion") + ":";
-            lblSeccion.InnerHtml = MultiLanguage.GetTranslate(_page, "lblSeccion") + ":";
-            lblDescripcion.InnerHtml = MultiLanguage.GetTranslate(_page, "lblDescripcion") + ":";
+            lblSeccionFiltrar.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblSeccion") + ":";
+            lblSeccion.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblSeccion") + ":";
+            lblDescripcion.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblDescripcion") + ":";
 
-            btnCancelar.InnerHtml = MultiLanguage.GetTranslate(_page, "btnCancelar");
-            btnGuardar.InnerHtml = MultiLanguage.GetTranslate(_page, "btnGuardar");
+            btnCancelar.InnerHtml = MultiLanguage.GetTranslate("btnCancelar");
+            btnGuardar.InnerHtml = MultiLanguage.GetTranslate("btnGuardar");
             
-            lblFiltrar.InnerHtml = MultiLanguage.GetTranslate(_page, "lblFiltrar");
-            lblNuevo.InnerHtml = MultiLanguage.GetTranslate(_page, "lblNuevo");
-            lblRefrescarCache.InnerHtml = MultiLanguage.GetTranslate(_page, "lblRefrescarCache");
+            lblFiltrar.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblFiltrar");
+            lblNuevo.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblNuevo");
+            lblRefrescarCache.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblRefrescarCache");
         }
 
         [WebMethod]
