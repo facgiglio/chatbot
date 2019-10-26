@@ -10,9 +10,9 @@ namespace Rules
     public class Rol
     {
         Mapper<Framework.Models.Rol> mapper = new Mapper<Framework.Models.Rol>();
-
-        private string _section {
-            get { return this.GetType().Name + ".asxp"; }
+        private string _seccion
+        {
+            get { return this.GetType().Name; }
         }
 
         #region Insertar
@@ -67,7 +67,6 @@ namespace Rules
         }
         #endregion
 
-
         #region Validaciones
         private void Validar(Framework.Models.Rol rol)
         {
@@ -75,7 +74,7 @@ namespace Rules
 
             if (rol.Descripcion == "")
             {
-                mensaje += MultiLanguage.GetTranslate(_section, "lblDescripcion") + ": ";
+                mensaje += MultiLanguage.GetTranslate(_seccion, "lblDescripcion") + ": ";
                 mensaje += MultiLanguage.GetTranslate("errorVacioString");
             }
 

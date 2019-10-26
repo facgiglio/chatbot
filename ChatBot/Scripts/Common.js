@@ -52,7 +52,7 @@ function showMessage(container, message, delay, style) {
     div.id = "__messageError";
     div.classList.add("alert");
     div.classList.add("alert-" + style);
-    div.setAttribute('style', 'position: absolute; z-index: 10; top:20px; width:100%; text-align:center');
+    div.setAttribute('style', 'position: absolute; z-index: 1; top:50px; width:100%; text-align:center');
     div.innerHTML = message;
     
     $("#__messageError").remove();

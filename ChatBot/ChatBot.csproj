@@ -169,7 +169,8 @@
     <Content Include="Views\Administracion\Frase.aspx" />
     <Content Include="Views\Administracion\Cliente.aspx" />
     <Content Include="Views\ChatBot.html" />
-    <Content Include="Views\MultiIdioma\MultiIdioma.aspx" />
+    <Content Include="Views\Sistema\Backup.aspx" />
+    <Content Include="Views\Sistema\MultiIdioma.aspx" />
     <Content Include="Views\Seguridad\Rol.aspx" />
     <Content Include="Views\Seguridad\Usuario.aspx" />
     <Content Include="Web.config">
@@ -259,11 +260,18 @@
     <Compile Include="Views\Administracion\Cliente.aspx.designer.cs">
       <DependentUpon>Cliente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\MultiIdioma\MultiIdioma.aspx.cs">
+    <Compile Include="Views\Sistema\Backup.aspx.cs">
+      <DependentUpon>Backup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Sistema\Backup.aspx.designer.cs">
+      <DependentUpon>Backup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sistema\MultiIdioma.aspx.cs">
       <DependentUpon>MultiIdioma.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\MultiIdioma\MultiIdioma.aspx.designer.cs">
+    <Compile Include="Views\Sistema\MultiIdioma.aspx.designer.cs">
       <DependentUpon>MultiIdioma.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Seguridad\Rol.aspx.cs">

@@ -51,47 +51,60 @@ namespace ChatBot
             }
         }
 
+
+        protected class Menu
+        {
+            public System.Web.UI.HtmlControls.HtmlGenericControl parentMenu { get; set; }
+            public List<System.Web.UI.HtmlControls.HtmlGenericControl> childMenus { get; set; }
+        }
+
         protected void MenuSecurity()
         {
-            var menuSeguridad = new List<System.Web.UI.HtmlControls.HtmlGenericControl> {
-                mnuUsuario,
-                mnuRol,
-                mnuMultiidioma
-            };
-            var menuAdministracion = new List<System.Web.UI.HtmlControls.HtmlGenericControl>{
-                mnuMultiidioma,
-                mnuFrase,
-                mnuPalabra,
-                mnuCliente
-            };
-
-            mnuSeguridad.Visible = false;
-            mnuAdministracion.Visible = false;
-
-            foreach (var menu in menuSeguridad) {
-                if (Framework.Security.IsAuthorized(Convert.ToInt32(menu.Attributes["rol"])))
-                {
-                    menu.Visible = true;
-                    mnuSeguridad.Visible = true;
+            var menus = new List<Menu> {
+                new Menu {
+                    parentMenu = mnuSeguridad,
+                    childMenus = new List<System.Web.UI.HtmlControls.HtmlGenericControl> {
+                        mnuUsuario,
+                        mnuRol
+                    }
+                },
+                new Menu {
+                    parentMenu = mnuAdministracion,
+                    childMenus = new List<System.Web.UI.HtmlControls.HtmlGenericControl>{
+                        mnuFrase,
+                        mnuPalabra,
+                        mnuCliente
+                    }
+                },
+                new Menu {
+                    parentMenu = mnuSistema,
+                    childMenus = new List<System.Web.UI.HtmlControls.HtmlGenericControl>{
+                        mnuMultiidioma,
+                        mnuBackup
+                    }
                 }
-                else
-                {
-                    menu.Visible = false;
-                }
-            }
+            };
 
-            foreach (var menu in menuAdministracion)
+            //Recorro el menu armado.
+            foreach (var item in menus)
             {
-                if (Framework.Security.IsAuthorized(Convert.ToInt32(menu.Attributes["rol"])))
+                item.parentMenu.Visible = false;
+
+                foreach (var menu in item.childMenus)
                 {
-                    menu.Visible = true;
-                    mnuAdministracion.Visible = true;
-                }
-                else
-                {
-                    menu.Visible = false;
+                    if (Framework.Security.IsAuthorized(Convert.ToInt32(menu.Attributes["rol"])))
+                    {
+                        menu.Visible = true;
+                        item.parentMenu.Visible = true;
+                    }
+                    else
+                    {
+                        menu.Visible = false;
+                    }
                 }
             }
         }
     }
+
+    
 }

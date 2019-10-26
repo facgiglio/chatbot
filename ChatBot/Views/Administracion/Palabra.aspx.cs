@@ -31,6 +31,7 @@ namespace ChatBot
             grdPalabra.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblPalabra"), ColumnType.Data, "Palabra1", "", false, true);
             grdPalabra.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblPalabra"), ColumnType.Data, "Palabra2", "", false, true);
             grdPalabra.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblPalabra"), ColumnType.Data, "Palabra3", "", false, true);
+            grdPalabra.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblRespuesta"), ColumnType.Data, "Respuesta", "", false, true);
             grdPalabra.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate("cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
             grdPalabra.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate("cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
             grdPalabra.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate("cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");

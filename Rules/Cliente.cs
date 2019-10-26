@@ -22,11 +22,15 @@ namespace Rules
                 mapper.Insert(cliente);
 
                 //Logueo la acción ejecutada.
-                Logger.LogInfo(logMessage);
+                Logger.Log(Logger.LogAction.Insertar, this.GetType().Name, cliente.IdCliente, Logger.LogType.Info, "");
             }
             catch (Exception ex)
             {
-                Logger.LogException(logMessage + " - Error: " + ex.Message);
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Insertar, this.GetType().Name, cliente.IdCliente, Logger.LogType.Exception, ex.Message);
+
+                //Throw the exception to the controller.
+                throw (ex);
             }
         }
         #endregion
@@ -34,20 +38,20 @@ namespace Rules
         #region Modificar
         public void Modificar(Models.Cliente cliente)
         {
-            var logMessage = "Modificar " + this.GetType().Name + " - Id: " + cliente.IdCliente.ToString();
-
             try
             {
                 //Actualizo el usuario
                 mapper.Update(cliente);
 
-                //Logueo 
-                Logger.LogInfo(logMessage);
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Modificar, this.GetType().Name, cliente.IdCliente, Logger.LogType.Info, "");
             }
             catch (Exception ex)
             {
-                Logger.LogException(logMessage + " - Error: " + ex.Message);
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Modificar, this.GetType().Name, cliente.IdCliente, Logger.LogType.Exception, ex.Message);
 
+                //Throw the exception to the controller.
                 throw (ex);
             }
         }
@@ -66,13 +70,15 @@ namespace Rules
 
                 mapper.Delete(parameters.ToArray());
 
-                //Logueo 
-                Logger.LogInfo(logMessage);
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Eliminar, this.GetType().Name, Id, Logger.LogType.Info, "");
             }
             catch (Exception ex)
             {
-                Logger.LogException(logMessage + " - Error: " + ex.Message);
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Eliminar, this.GetType().Name, Id, Logger.LogType.Exception, ex.Message);
 
+                //Arrojo la excepción a la controladora..
                 throw (ex);
             }
 
