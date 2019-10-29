@@ -77,8 +77,6 @@ namespace Rules
         #region Eliminar
         public void Eliminar(int Id)
         {
-            var logMessage = "Eliminar {0} - Id: {1}";
-
             try
             {
                 List<SqlParameter> parameters = new List<SqlParameter>() {
@@ -86,9 +84,6 @@ namespace Rules
                 };
 
                 mapper.Delete(parameters.ToArray());
-
-                //Logueo la acción ejecutada.
-                logMessage = string.Format(logMessage, _seccion, Id.ToString());
 
                 //Logueo la acción ejecutada.
                 Logger.Log(Logger.LogAction.Eliminar, _seccion, Id, Logger.LogType.Info, "");

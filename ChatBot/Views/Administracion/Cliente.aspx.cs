@@ -15,17 +15,13 @@ namespace ChatBot
 {
     public partial class Cliente : Page
     {
-        private readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         const string _seccion = "Cliente";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
             //Controlo si puede ingresar a la pantalla.
-            if (!Security.IsAuthorized(_page, Constantes.Action.Listado))
-                Response.Redirect(Page.ResolveClientUrl("~/Views/LogIn.aspx"));
-            */
-            Logger.LogInfo("Cliente - Listado");
+            if (!Security.IsAuthorized((int)Constantes.Roles.Cliente))
+                Response.Redirect(Page.ResolveClientUrl("~/LogIn.aspx"));
 
             grdCliente.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdId"), ColumnType.Data, "IdCliente", "", true, false);
             grdCliente.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblRazonSocial"), ColumnType.Data, "RazonSocial", "", false, true);
@@ -56,8 +52,15 @@ namespace ChatBot
         [WebMethod]
         public static void Insertar(Models.Cliente cliente)
         {
-            var br = new Rules.Cliente();
-            br.Insertar(cliente);
+            try
+            {
+                var br = new Rules.Cliente();
+                br.Insertar(cliente);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
         }
 
         [WebMethod]
@@ -77,9 +80,16 @@ namespace ChatBot
         [WebMethod]
         public static void Eliminar(Models.Cliente cliente)
         {
-            var br = new Rules.Cliente();
-            br.Eliminar(cliente.IdCliente);
-        }
+            try
+            {
+                var br = new Rules.Cliente();
+                br.Eliminar(cliente.IdCliente);
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+}
 
         [WebMethod]
         public static Models.Cliente Obtener(int Id)

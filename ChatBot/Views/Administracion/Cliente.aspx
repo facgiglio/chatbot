@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Listado de Usuario" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cliente.aspx.cs" Inherits="ChatBot.Cliente" %>
+﻿<%@ Page Title="Listado de Clientes" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cliente.aspx.cs" Inherits="ChatBot.Cliente" %>
 <%@ Register TagPrefix="CW" Namespace="Framework.WebControls" Assembly="Framework" %>
 <%@ Import Namespace="Framework" %>
 
@@ -69,9 +69,9 @@
     </div>
 
     <script type="text/javascript">
-        const tituloNuevo = '<%: MultiLanguage.GetTranslate(_seccion, "tituloNuevo")%>';
-        const tituloActualizar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloActualizar")%>';
-        const tituloEliminar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloEliminar")%>';
+        const tituloNuevo = '<%: MultiLanguage.GetTranslate(_seccion, "tituloNuevoCliente")%>';
+        const tituloActualizar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloActualizarCliente")%>';
+        const tituloEliminar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloEliminarCliente")%>';
 
         $(document).ready(function () {});
 

@@ -134,6 +134,7 @@
     <Content Include="Content\img\chatbot_login.png" />
     <Content Include="Content\img\en.png" />
     <Content Include="Content\img\es.png" />
+    <Content Include="Content\img\Open24-7.png" />
     <Content Include="Content\img\pt.png" />
     <Content Include="LogIn.aspx" />
     <Content Include="About.aspx" />

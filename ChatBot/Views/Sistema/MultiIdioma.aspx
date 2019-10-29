@@ -56,9 +56,9 @@
     </div>
 
     <script type="text/javascript">
-        const tituloNuevo = '<%: MultiLanguage.GetTranslate(_seccion, "tituloNuevo")%>';
-        const tituloActualizar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloActualizar")%>';
-        const tituloEliminar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloEliminar")%>';
+        const tituloNuevo = '<%: MultiLanguage.GetTranslate(_seccion, "tituloNuevoMultiIdioma")%>';
+        const tituloActualizar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloActualizarMultiIdioma")%>';
+        const tituloEliminar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloEliminarMultiIdioma")%>';
 
         $( document ).ready(function() {
             $("table input").change(function () {

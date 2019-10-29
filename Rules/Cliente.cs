@@ -10,24 +10,29 @@ namespace Rules
     public class Cliente
     {
         Mapper<Models.Cliente> mapper = new Mapper<Models.Cliente>();
+        private string _seccion
+        {
+            get { return this.GetType().Name; }
+        }
 
         #region Insertar
         public void Insertar(Models.Cliente cliente)
         {
-            var logMessage = "Insertar " + this.GetType().Name + " - Id: " + cliente.IdCliente.ToString();
-
             try
             {
+                //Valido la entidad antes.
+                this.Validar(cliente);
+
                 //Inserto la entidad.
                 mapper.Insert(cliente);
 
                 //Logueo la acción ejecutada.
-                Logger.Log(Logger.LogAction.Insertar, this.GetType().Name, cliente.IdCliente, Logger.LogType.Info, "");
+                Logger.Log(Logger.LogAction.Insertar, _seccion, cliente.IdCliente, Logger.LogType.Info, "");
             }
             catch (Exception ex)
             {
                 //Logueo la acción ejecutada.
-                Logger.Log(Logger.LogAction.Insertar, this.GetType().Name, cliente.IdCliente, Logger.LogType.Exception, ex.Message);
+                Logger.Log(Logger.LogAction.Insertar, _seccion, cliente.IdCliente, Logger.LogType.Exception, ex.Message);
 
                 //Throw the exception to the controller.
                 throw (ex);
@@ -40,16 +45,19 @@ namespace Rules
         {
             try
             {
+                //Valido la entidad antes.
+                this.Validar(cliente);
+
                 //Actualizo el usuario
                 mapper.Update(cliente);
 
                 //Logueo la acción ejecutada.
-                Logger.Log(Logger.LogAction.Modificar, this.GetType().Name, cliente.IdCliente, Logger.LogType.Info, "");
+                Logger.Log(Logger.LogAction.Modificar, _seccion, cliente.IdCliente, Logger.LogType.Info, "");
             }
             catch (Exception ex)
             {
                 //Logueo la acción ejecutada.
-                Logger.Log(Logger.LogAction.Modificar, this.GetType().Name, cliente.IdCliente, Logger.LogType.Exception, ex.Message);
+                Logger.Log(Logger.LogAction.Modificar, _seccion, cliente.IdCliente, Logger.LogType.Exception, ex.Message);
 
                 //Throw the exception to the controller.
                 throw (ex);
@@ -60,8 +68,6 @@ namespace Rules
         #region Eliminar
         public void Eliminar(int Id)
         {
-            var logMessage = "Eliminar " + this.GetType().Name + " - Id: " + Id.ToString();
-
             try
             {
                 List<SqlParameter> parameters = new List<SqlParameter>() {
@@ -71,18 +77,16 @@ namespace Rules
                 mapper.Delete(parameters.ToArray());
 
                 //Logueo la acción ejecutada.
-                Logger.Log(Logger.LogAction.Eliminar, this.GetType().Name, Id, Logger.LogType.Info, "");
+                Logger.Log(Logger.LogAction.Eliminar, _seccion, Id, Logger.LogType.Info, "");
             }
             catch (Exception ex)
             {
                 //Logueo la acción ejecutada.
-                Logger.Log(Logger.LogAction.Eliminar, this.GetType().Name, Id, Logger.LogType.Exception, ex.Message);
+                Logger.Log(Logger.LogAction.Eliminar, _seccion, Id, Logger.LogType.Exception, ex.Message);
 
-                //Arrojo la excepción a la controladora..
+                //Throw the exception to the controller.
                 throw (ex);
             }
-
-            
         }
         #endregion
 
@@ -117,8 +121,50 @@ namespace Rules
 
             return mapper.GetByWhere(parameters.ToArray());
         }
-        
+
         #endregion
 
+        #region Validaciones
+        private void Validar(Models.Cliente cliente)
+        {
+            var mensaje = "";
+
+            if (cliente.RazonSocial == "")
+            {
+                mensaje += (mensaje != "" ? Environment.NewLine : "");
+                mensaje += MultiLanguage.GetTranslate(_seccion, "lblRazonSocial") + ": ";
+                mensaje += MultiLanguage.GetTranslate("errorVacioString");
+            }
+
+            if (cliente.Direccion == "")
+            {
+                mensaje += (mensaje != "" ? Environment.NewLine : "");
+                mensaje += MultiLanguage.GetTranslate(_seccion, "lblDireccion") + ": ";
+                mensaje += MultiLanguage.GetTranslate("errorVacioString");
+            }
+
+            if (cliente.Telefono == "")
+            {
+                mensaje += (mensaje != "" ? Environment.NewLine : "");
+                mensaje += MultiLanguage.GetTranslate(_seccion, "lblTelefono") + ": ";
+                mensaje += MultiLanguage.GetTranslate("errorVacioString");
+            }
+
+            if (cliente.CodigoPostal == "")
+            {
+                mensaje += (mensaje != "" ? Environment.NewLine : "");
+                mensaje += MultiLanguage.GetTranslate(_seccion, "lblCodigoPostal") + ": ";
+                mensaje += MultiLanguage.GetTranslate("errorVacioString");
+            }
+
+            if (mensaje != "")
+                throw new Exception(mensaje);
+        }
+
+        private bool ControlarPalabra(string palabra)
+        {
+            return palabra.Split(' ').Length > 1;
+        }
+        #endregion
     }
 }

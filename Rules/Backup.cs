@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Configuration;
+using Framework;
 using Framework.Helpers;
 
 namespace Rules
@@ -35,37 +36,78 @@ namespace Rules
 
         public void BackupDatabase(string fileName)
         {
-            //Agrego la extensión del archivo
-            fileName += ".bak";
+            try
+            {
+                //Agrego la extensión del archivo
+                fileName += ".bak";
 
-            var store = "BackupDatabase";
-            var parameters = new List<SqlParameter>() {
+                var store = "BackupDatabase";
+                var parameters = new List<SqlParameter>() {
                 new SqlParameter("@fileName", fileName),
                 new SqlParameter("@directory", directory)
             };
 
-            //Ejecuto el backup.
-            SqlHelper.ExecuteQueryMaster(store, parameters.ToArray());
+                //Ejecuto el backup.
+                SqlHelper.ExecuteQueryMaster(store, parameters.ToArray());
+
+                //Logueo la acción ejecutada.
+                Logger.LogInfo("Backup Database - File: " + directory + @"\" + fileName);
+            }
+            catch (Exception ex)
+            {
+                //Logueo la acción ejecutada.
+                Logger.LogException("Backup Database - File: " + directory + @"\" + fileName + " Error: " + ex.Message);
+
+                //Throw the exception to the controller.
+                throw (ex);
+            }
         }
 
         public void RestoreDatabase(string fileName)
         {
-            var store = "RestoreDatabase";
-            var parameters = new List<SqlParameter>() {
-                new SqlParameter("@fileName", fileName),
-                new SqlParameter("@directory", directory)
-            };
+            try
+            {
+                var store = "RestoreDatabase";
+                var parameters = new List<SqlParameter>() {
+                    new SqlParameter("@fileName", fileName),
+                    new SqlParameter("@directory", directory)
+                };
 
-            //Ejecuto el backup.
-            SqlHelper.ExecuteQueryMaster(store, parameters.ToArray());
+                //Ejecuto el backup.
+                SqlHelper.ExecuteQueryMaster(store, parameters.ToArray());
 
+                //Logueo la acción ejecutada.
+                Logger.LogInfo("Restore Database - File: " + directory + @"\" + fileName);
+            }
+            catch (Exception ex)
+            {
+                //Logueo la acción ejecutada.
+                Logger.LogException("Restore Database - File: " + directory + @"\" + fileName + " Error: " + ex.Message);
+
+                //Throw the exception to the controller.
+                throw (ex);
+            }
         }
 
         public void DeleteDatabase(string fileName)
         {
-            var dir = new DirectoryInfo(directory);
+            try
+            {
+                var dir = new DirectoryInfo(directory);
 
-            File.Delete(directory + @"\" + fileName);
+                File.Delete(directory + @"\" + fileName);
+
+                //Logueo la acción ejecutada.
+                Logger.LogInfo("Delete Database - File: " + directory + @"\" + fileName);
+            }
+            catch (Exception ex)
+            {
+                //Logueo la acción ejecutada.
+                Logger.LogException("Delete Database - File: " + directory + @"\" + fileName + " Error: " + ex.Message);
+
+                //Throw the exception to the controller.
+                throw (ex);
+            }
         }
     }
 }

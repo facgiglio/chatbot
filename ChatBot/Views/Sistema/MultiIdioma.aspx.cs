@@ -16,6 +16,10 @@ namespace ChatBot
         const string _seccion = "MultiIdioma";
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Controlo si puede ingresar a la pantalla.
+            if (!Security.IsAuthorized((int)Constantes.Roles.MultiIdioma))
+                Response.Redirect(Page.ResolveClientUrl("~/LogIn.aspx"));
+
             int seccion = 0;
 
             if (IsPostBack)

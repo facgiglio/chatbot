@@ -5,6 +5,9 @@
     <div class="row" style="margin-top:50px;">
             <form>
                 <div class="row">
+                    <div class="col-md-2">
+                        &nbsp;
+                    </div>
                     <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -34,7 +37,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-4">
                         <img src="Content/img/chatbot_login.png" class="img-responsive" alt="Responsive image">
                     </div>
                 </div>

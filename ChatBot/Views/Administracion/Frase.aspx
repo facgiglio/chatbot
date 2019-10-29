@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Listado de Usuario" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Frase.aspx.cs" Inherits="ChatBot.Frase" %>
+﻿<%@ Page Title="Frases" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Frase.aspx.cs" Inherits="ChatBot.Frase" %>
 <%@ Register TagPrefix="CW" Namespace="Framework.WebControls" Assembly="Framework" %>
 <%@ Import Namespace="Framework" %>
 

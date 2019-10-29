@@ -9,6 +9,11 @@ using System.Threading.Tasks;
     {
         public enum Roles { 
             Usuario = 1,
-            ROles = 2
+            Roles = 2,
+            MultiIdioma = 3,
+            Frases = 4,
+            Palabras = 5,
+            Cliente = 6,
+            Backup = 7
         }
     }
