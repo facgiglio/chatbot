@@ -35,13 +35,13 @@
                     <h4 class="modal-title">Modal title</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
+                    <div class="row form-group">
                         <div class="col-sm-12">
                             <label id="lblRazonSocial" for="txtRazonSocial" class="col-form-label" runat="server"></label>
                             <input id="txtRazonSocial" type="text" class="form-control form-control-sm">
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row form-group">
                         <div class="col-sm-6">
                             <label id="lblDireccion" for="txtDireccion" class="col-form-label" runat="server"></label>
                             <input id="txtDireccion" class="form-control form-control-sm" />
@@ -55,10 +55,27 @@
                             <input id="txtTelefono" class="form-control form-control-sm"/>
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col-sm-12">
+                            <label id="lblHostName" for="txtHostName" class="col-form-label" runat="server"></label>
+                            <input id="txtHostName" class="form-control form-control-sm" />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-12">
+                            <label id="lblHashKey" for="txtHashKey" class="col-form-label" runat="server"></label>
+                            <input id="txtHashKey" class="form-control form-control-sm" disabled/>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-12">
+                            <label id="lblChatbotName" for="txtHashKey" class="col-form-label" runat="server"></label>
+                            <input id="txtChatbotName" class="form-control form-control-sm" disabled/>
+                        </div>
+                    </div>
 
                     <input type="hidden" id="hddModo" value="alta" />
                     <input type="hidden" id="hddId" value="0" />
-                    <input type="hidden" id="hddContrasena" value="0" />
                 </div>
                 <div class="modal-footer">
                     <button id="btnCancelar" runat="server" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -121,6 +138,21 @@
             });
         }
 
+        function HashKey(grid, type) {
+            var entity = JSON.parse($(grid.activeRow).attr("rowdata"));
+            var jsonData = { "Id": entity.IdCliente}
+            $.ajax({
+                type: "POST",
+                url: getActionUrl(type),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify(jsonData),
+                success: function (result) {
+                    location.reload();
+                }
+            });
+        }
+
         function LoadData(entity) { 
             ClearData();
 
@@ -129,6 +161,9 @@
             $("#txtDireccion").val(entity.Direccion);
             $("#txtCodigoPostal").val(entity.CodigoPostal);
             $("#txtTelefono").val(entity.Telefono);
+            $("#txtHostName").val(entity.HostName);
+            $("#txtHashKey").val(entity.HashKey);
+            $("#txtChatbotName").val(entity.ChatbotName);
         }
 
         function ClearData() {
@@ -137,15 +172,21 @@
             $("#txtDireccion").val("");
             $("#txtCodigoPostal").val("");
             $("#txtTelefono").val("");
+            $("#txtHostName").val("");
+            $("#txtHashKey").val("");
+            $("#txtChatbotName").val("");
         }
 
         function Accion() {
              var entity = {
-                "IdCliente": $("#hddId").val(),
-                "RazonSocial": $("#txtRazonSocial").val(),
-                "Direccion": $("#txtDireccion").val(),
-                "CodigoPostal": $("#txtCodigoPostal").val(),
-                "Telefono": $("#txtTelefono").val()
+                 "IdCliente": $("#hddId").val(),
+                 "RazonSocial": $("#txtRazonSocial").val(),
+                 "Direccion": $("#txtDireccion").val(),
+                 "CodigoPostal": $("#txtCodigoPostal").val(),
+                 "Telefono": $("#txtTelefono").val(),
+                 "HostName": $("#txtHostName").val(),
+                 "HashKey": $("#txtHashKey").val(),
+                 "ChatbotName": $("#txtChatbotName").val()
             }
 
             if (!Validaciones(entity)) return false;

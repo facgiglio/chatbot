@@ -53,6 +53,7 @@
                                 <li runat="server" id="mnuFrase"   rol="4"><a href="<%:Page.ResolveClientUrl("~/Views/Administracion/Frase")   %>">Frases</a></li>
                                 <li runat="server" id="mnuPalabra" rol="5"><a href="<%:Page.ResolveClientUrl("~/Views/Administracion/Palabra") %>">Palabras</a></li>
                                 <li runat="server" id="mnuCliente" rol="7"><a href="<%:Page.ResolveClientUrl("~/Views/Administracion/Cliente") %>">Clientes</a></li>
+                                <li runat="server" id="mnuChatbot" rol="7"><a href="<%:Page.ResolveClientUrl("~/Views/Administracion/ChatbotAdm") %>">Chatbot</a></li>
                             </ul>
                         </li>
 

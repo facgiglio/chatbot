@@ -4,6 +4,8 @@
     [IdCliente]      INT NOT NULL,
     CONSTRAINT [PK_FraseCliente] PRIMARY KEY CLUSTERED ([IdClienteFrase] ASC),
     CONSTRAINT [FK_FraseCliente_Cliente] FOREIGN KEY ([IdCliente]) REFERENCES [dbo].[Cliente] ([IdCliente]),
-    CONSTRAINT [FK_FraseCliente_Frase] FOREIGN KEY ([IdFrase]) REFERENCES [dbo].[Frase] ([IdFrase])
+    CONSTRAINT [FK_FraseCliente_Frase] FOREIGN KEY ([IdFrase]) REFERENCES [dbo].[Frase] ([IdFrase]) ON DELETE CASCADE
 );
+
+
 

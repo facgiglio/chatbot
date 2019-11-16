@@ -1,12 +1,11 @@
 ﻿class Chatbot {
 
-    constructor() {
+    constructor(chatbotId, chatbotName) {
         //Properties
-        this.id = '5d5f41c98asd8g132c';
-        this.name = 'El chatbot de la gente';
+        this.id = chatbotId;
+        this.name = chatbotName;
         this.who = 'User';
         this.webService = 'http://localhost/ChatBot/Chatbot/chatbotWS.asmx/HelloWorld'
-
 
         //Create function
         this.create();
@@ -166,6 +165,8 @@
             '    <soap12:Body>' +
             '      <Chat xmlns="http://localhost/ChatBot/">' +
             '        <input>' + message + '</input>' +
+            '        <hashKey>' + chatbot.id + '</hashKey>' +
+            '        <hostName>' + window.location.href + '</hostName>' +
             '      </Chat>' +
             '    </soap12:Body>' +
             '  </soap12:Envelope>';
@@ -200,8 +201,6 @@
         return "";
     }
 }
-
-var chatbot = new Chatbot();
 
 function WebSvc()   // Class Signature
 {

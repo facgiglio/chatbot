@@ -187,22 +187,30 @@ namespace Rules
             return frases;
         }
 
-        public string BuscarFrase(List<string> frases)
+        public string BuscarFrase(int idCliente, List<string> frases)
         {
-            SqlParameter[] paramExacta = {new SqlParameter("@Frases", String.Join("|", frases))};
+            SqlParameter[] paramExacta = {
+                new SqlParameter("@Frases", String.Join("|", frases)),
+                new SqlParameter("@IdCliente", idCliente),
+            };
+
             //Obtengo primero por la frase exacta.
             var respuestas = mapper.GetListEntity("BuscarFraseExacta", paramExacta);
 
             if (respuestas.Count == 0)
             {
-                SqlParameter[] paramAprox = { new SqlParameter("@Frases", String.Join("|", frases)) };
+                SqlParameter[] paramAprox = {
+                    new SqlParameter("@Frases", String.Join("|", frases)),
+                    new SqlParameter("@IdCliente", idCliente)
+                };
+
                 //No no tengo la frase exacta, obtengo por un aproximado.
                 respuestas = mapper.GetListEntity("BuscarFraseAproximada", paramAprox);
 
+                //Si no hay respuesta devuelvo vacío para continuar con el proceso.
                 if (respuestas.Count == 0)
                 {
-                    //Aca tengo que guardar el tema de aprender.
-                    return "No entendí una mierda, podes escribir mejor carajo. No cuesta una mierda ser claro, no?";
+                    return "";
                 }
             }
 

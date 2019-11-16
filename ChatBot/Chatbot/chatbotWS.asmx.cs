@@ -18,12 +18,32 @@ namespace ChatBot.Chatbot
     public class chatbotWS : System.Web.Services.WebService
     {
         [WebMethod]
-        public string Chat(string input)
+        public string Chat(string input, string hashKey, string hostName)
         {
-            var Chatbot = new Rules.Chatbot();
-            var respuesta = Chatbot.Responder(input);
+            try
+            {
+                var cliente = new Rules.Cliente().ObtenerPorId(Convert.ToInt32(Framework.Security.Decrypt(hashKey)));
 
-            return respuesta;
+                if (cliente == null)
+                {
+                    return "El sitio no está correctamente configurado para ejecutar el chatbot, contactese con Facax System.";
+                }
+
+                if (!hostName.Contains(cliente.HostName))
+                {
+                    return "El sitio no está correctamente configurado para ejecutar el chatbot, contactese con Facax System.";
+                }
+
+                var Chatbot = new Rules.Chatbot(cliente.IdCliente);
+                var respuesta = Chatbot.Responder(input);
+
+                return respuesta;
+            }
+            catch (Exception Ex)
+            {
+                return "Ocurrió un error al procesar tu consulta, intentalo nuevamente.";
+            }
+            
         }
     }
 }

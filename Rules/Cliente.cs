@@ -90,8 +90,46 @@ namespace Rules
         }
         #endregion
 
+        #region HashKey
+        public void GenerarHashKey(int Id)
+        {
+            try
+            {
+                var cliente = mapper.GetById(Id);
+
+                cliente.HashKey = Framework.Security.Encrypt(cliente.IdCliente.ToString());
+
+                Modificar(cliente);
+            }
+            catch (Exception ex)
+            {
+                //Throw the exception to the controller.
+                throw (ex);
+            }
+        }
+
+        public void EliminarHashKey(int Id)
+        {
+            try
+            {
+                var cliente = mapper.GetById(Id);
+
+                cliente.HashKey = "";
+
+                Modificar(cliente);
+            }
+            catch (Exception ex)
+            {
+                //Throw the exception to the controller.
+                throw (ex);
+            }
+
+
+
+        }
+        #endregion
+
         #region Obtener
-        
         public Models.Cliente ObtenerPorId(int Id)
         {
             try
@@ -111,6 +149,11 @@ namespace Rules
         public List<object> ObtenerListado()
         {
             return mapper.GetList(null);
+        }
+
+        public List<Models.Cliente> ObtenerClientes()
+        {
+            return mapper.GetListEntity(null);
         }
         
         public Models.Cliente ObtenerPoryRazonSocial(string RazonSocial)
@@ -154,6 +197,13 @@ namespace Rules
             {
                 mensaje += (mensaje != "" ? Environment.NewLine : "");
                 mensaje += MultiLanguage.GetTranslate(_seccion, "lblCodigoPostal") + ": ";
+                mensaje += MultiLanguage.GetTranslate("errorVacioString");
+            }
+
+            if (cliente.HostName == "")
+            {
+                mensaje += (mensaje != "" ? Environment.NewLine : "");
+                mensaje += MultiLanguage.GetTranslate(_seccion, "lblHostName") + ": ";
                 mensaje += MultiLanguage.GetTranslate("errorVacioString");
             }
 

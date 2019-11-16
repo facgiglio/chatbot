@@ -19,8 +19,16 @@ namespace Models
         public string CodigoPostal { get; set; }
         [Insertable, Updatable]
         public string Telefono { get; set; }
+        [Insertable, Updatable]
+        public string ChatbotName { get; set; }
+        [Insertable, Updatable]
+        public string HostName { get; set; }
+        [Insertable, Updatable]
+        public string HashKey { get; set; }
+
         [EntityMany("ClienteFrase", "Frase", "IdCliente", "IdFrase")]
         public List<Models.Frase> Frases { get; set; }
+
         [EntityMany("ClientePalabra", "Palabra", "IdCliente", "IdPalabra")]
         public List<Palabra> Palabras { get; set; }
 

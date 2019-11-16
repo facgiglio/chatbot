@@ -13,7 +13,7 @@ using System.Threading.Tasks;
             MultiIdioma = 3,
             Frases = 4,
             Palabras = 5,
-            Cliente = 6,
-            Backup = 7
+            Cliente = 7,
+            Backup = 8
         }
     }

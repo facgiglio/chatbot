@@ -166,6 +166,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Views\Administracion\ChatbotAdm.aspx" />
     <Content Include="Views\Administracion\Palabra.aspx" />
     <Content Include="Views\Administracion\Frase.aspx" />
     <Content Include="Views\Administracion\Cliente.aspx" />
@@ -239,6 +240,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administracion\ChatbotAdm.aspx.cs">
+      <DependentUpon>ChatbotAdm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Administracion\ChatbotAdm.aspx.designer.cs">
+      <DependentUpon>ChatbotAdm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Administracion\Palabra.aspx.cs">
       <DependentUpon>Palabra.aspx</DependentUpon>

@@ -85,5 +85,7 @@
     <Build Include="dbo\Stored Procedures\BuscarFraseAproximada.sql" />
     <Build Include="dbo\Stored Procedures\BuscarFrase.sql" />
     <Build Include="dbo\Stored Procedures\sys_CheckDatabase.sql" />
+    <Build Include="dbo\Tables\Log.sql" />
+    <Build Include="dbo\Stored Procedures\BuscarPalabra.sql" />
   </ItemGroup>
 </Project>
