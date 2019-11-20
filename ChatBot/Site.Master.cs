@@ -7,6 +7,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using Framework;
 
+
 namespace ChatBot
 {
     public partial class SiteMaster : MasterPage
@@ -15,7 +16,7 @@ namespace ChatBot
         {
             if (Convert.ToBoolean(Request.QueryString["logout"]))
             {
-                Framework.Helpers.Session.LogOut();
+                Framework.Session.LogOut();
             }
 
             MenuSecurity();
@@ -26,10 +27,22 @@ namespace ChatBot
                 var flag = "";
                 var li = "<li class=\"nav-item text-nowrap\">#CONTENT#</li>";
 
-                if (Framework.Helpers.Session.User != null)
+                if (Framework.Session.User != null)
                 {
+                    switch (Framework.Session.User.IdIdioma)
+                    {
+                        case 1:
+                            flag = "es";
+                            break;
+                        case 2:
+                            flag = "en";
+                            break;
+                        case 3:
+                            flag = "pt";
+                            break;
+                    }
 
-                    html += li.Replace("#CONTENT#", "<a class=\"nav-link\" href=\"" + Page.ResolveClientUrl("~/Content/Img/") + "\"><i class=\"fas fa-user\"></i>&nbsp;&nbsp;" + Framework.Helpers.Session.User.Nombre + ", " + Framework.Helpers.Session.User.Apellido + "</a>");
+                    html += li.Replace("#CONTENT#", "<a class=\"nav-link\" href=\"" + Page.ResolveClientUrl("~/Content/Img/") + "\"><i class=\"fas fa-user\"></i>&nbsp;&nbsp;" + Framework.Session.User.Nombre + ", " + Framework.Session.User.Apellido + "</a>");
 
                     var idiomas = (new Rules.Idioma()).GetEntityList();
                     var menuIdioma = "<li class=\"dropdow\">";
@@ -40,8 +53,8 @@ namespace ChatBot
                     //Recorro los idiomas.
                     foreach (var idioma in idiomas)
                     {
-                        if(idioma.IdIdioma != Framework.Helpers.Session.User.IdIdioma)
-                            menuIdioma += "<li onclick=\"\"><a><img src=\"" + Page.ResolveClientUrl("~/Content/Img/") + idioma.Iso + ".png\" />&nbsp;&nbsp;" + idioma.Descripcion + "</a></li>";
+                        if (idioma.IdIdioma != Framework.Session.User.IdIdioma)
+                            menuIdioma += "<li onclick=\"genericAction('@Idioma', {'IdIdioma':" + idioma.IdIdioma.ToString() + "},'" + Page.ResolveClientUrl("~/Default.aspx/Cambiaridioma") + "')\"><a><img src=\"" + Page.ResolveClientUrl("~/Content/Img/") + idioma.Iso + ".png\" />&nbsp;&nbsp;" + idioma.Descripcion + "</a></li>";
                     }
 
                     menuIdioma += "</ul></li>";
@@ -54,7 +67,6 @@ namespace ChatBot
                 }
             }
         }
-
 
         protected class Menu
         {

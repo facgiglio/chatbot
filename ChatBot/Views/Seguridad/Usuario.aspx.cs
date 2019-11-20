@@ -13,7 +13,7 @@ namespace ChatBot
 {
     public partial class Usuario : Page
     {
-        const string _seccion = "Usuario.aspx";
+        const string _seccion = "Usuario";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -51,17 +51,16 @@ namespace ChatBot
 
         private void SetLanguage()
         {
-            /*
-            tituloPrincipal.InnerHtml = MultiLanguage.GetTranslate(_page, "tituloPrincipal");
-            tituloSecundario.InnerHtml = MultiLanguage.GetTranslate(_page, "tituloSecundario");
-            */
+            tituloPrincipal.InnerHtml = MultiLanguage.GetTranslate(_seccion, "tituloPrincipal");
             lblCliente.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblCliente");
-            btnCancelar.InnerHtml = MultiLanguage.GetTranslate(_seccion, "btnCancelar");
-            btnGuardar.InnerHtml = MultiLanguage.GetTranslate(_seccion, "btnGuardar");
             lblEmail.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblEmail");
+            lblContrasena.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblContrasena");
             lblNombre.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblNombre");
             lblApellido.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblApellido");
             lblIdioma.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblIdioma");
+
+            btnCancelar.InnerHtml = MultiLanguage.GetTranslate("btnCancelar");
+            btnGuardar.InnerHtml = MultiLanguage.GetTranslate("btnGuardar");
         }
 
         [WebMethod]

@@ -18,6 +18,7 @@ namespace Rules
 
         public string Responder(string mensaje) {
             var frase = new Rules.Frase();
+            var palabra = new Rules.Palabra();
             var respuesta = "";
 
             //Enviamos el mensaje recibido para ser procesado.
@@ -26,9 +27,10 @@ namespace Rules
             //Busco la respuesta a la frase, si es que la encuentra.
             respuesta = frase.BuscarFrase(IdCliente, frases);
 
+            //Si no encontró respuesta, continuo buscando por palabras
             if (respuesta == "")
             {
-                //Continuo con el proceso
+                respuesta = palabra.ConsultarmatrixEngine(IdCliente, mensaje);
             }
 
             //Si no encontré la respuesta, 
@@ -41,17 +43,15 @@ namespace Rules
                     Aprendido = false
                 };
 
-                //
+                //Respuesta por defecto.
+                respuesta = "No entendí, por favor podrías repetirlo?";
+
+                //Inserto la entidad para poder lugeo configurarlo.
                 br.Insertar(aprender);
             }
 
 
             return respuesta;
-        }
-
-        public bool Aprender() {
-
-            return true;
         }
     }
 }

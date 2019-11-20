@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ChatBot.SiteMaster" %>
+<%@ Import Namespace="Framework" %>
 
 <!DOCTYPE html>
 
@@ -48,28 +49,28 @@
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                         
                         <li class="dropdown" runat="server" id="mnuAdministracion">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administración<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">     <%: MultiLanguage.GetTranslate("menuAdministracion")%><span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li runat="server" id="mnuFrase"   rol="4"><a href="<%:Page.ResolveClientUrl("~/Views/Administracion/Frase")   %>">Frases</a></li>
-                                <li runat="server" id="mnuPalabra" rol="5"><a href="<%:Page.ResolveClientUrl("~/Views/Administracion/Palabra") %>">Palabras</a></li>
-                                <li runat="server" id="mnuCliente" rol="7"><a href="<%:Page.ResolveClientUrl("~/Views/Administracion/Cliente") %>">Clientes</a></li>
-                                <li runat="server" id="mnuChatbot" rol="7"><a href="<%:Page.ResolveClientUrl("~/Views/Administracion/ChatbotAdm") %>">Chatbot</a></li>
+                                <li runat="server" id="mnuFrase"   rol="4"><a href="<%:Page.ResolveClientUrl("~/Views/Administracion/Frase")     %>"><%: MultiLanguage.GetTranslate("menuFrases")     %></a></li>
+                                <li runat="server" id="mnuPalabra" rol="5"><a href="<%:Page.ResolveClientUrl("~/Views/Administracion/Palabra")   %>"><%: MultiLanguage.GetTranslate("menuPalabras")   %></a></li>
+                                <li runat="server" id="mnuCliente" rol="7"><a href="<%:Page.ResolveClientUrl("~/Views/Administracion/Cliente")   %>"><%: MultiLanguage.GetTranslate("menuClientes")   %></a></li>
+                                <li runat="server" id="mnuChatbot" rol="9"><a href="<%:Page.ResolveClientUrl("~/Views/Administracion/ChatbotAdm")%>"><%: MultiLanguage.GetTranslate("menuChatbot")    %></a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown" runat="server" id="mnuSeguridad">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Seguridad <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">     <%: MultiLanguage.GetTranslate("menuSeguridad")  %><span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li runat="server" id="mnuUsuario" rol="1"><a href="<%:Page.ResolveClientUrl("~/Views/Seguridad/Usuario")  %>">Usuarios</a></li>
-                                <li runat="server" id="mnuRol"     rol="2"><a href="<%:Page.ResolveClientUrl("~/Views/Seguridad/Rol")      %>">Roles</a></li>
+                                <li runat="server" id="mnuUsuario" rol="1"><a href="<%:Page.ResolveClientUrl("~/Views/Seguridad/Usuario")        %>"><%: MultiLanguage.GetTranslate("menuUsuarios")   %></a></li>
+                                <li runat="server" id="mnuRol"     rol="2"><a href="<%:Page.ResolveClientUrl("~/Views/Seguridad/Rol")            %>"><%: MultiLanguage.GetTranslate("menuRoles")      %></a></li>
                             </ul>
                         </li>
                         
                         <li class="dropdown" runat="server" id="mnuSistema">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sistema <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">     <%: MultiLanguage.GetTranslate("menuSistema")    %><span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li runat="server" id="mnuMultiidioma" rol="3"><a href="<%:Page.ResolveClientUrl("~/Views/Sistema/MultiIdioma")  %>">MultiIdioma</a></li>
-                                <li runat="server" id="mnuBackup"      rol="8"><a href="<%:Page.ResolveClientUrl("~/Views/Sistema/Backup")       %>">Backup</a></li>
+                                <li runat="server" id="mnuMultiidioma" rol="3"><a href="<%:Page.ResolveClientUrl("~/Views/Sistema/MultiIdioma")  %>"><%: MultiLanguage.GetTranslate("menuMultiIdioma")%></a></li>
+                                <li runat="server" id="mnuBackup"      rol="8"><a href="<%:Page.ResolveClientUrl("~/Views/Sistema/Backup")       %>"><%: MultiLanguage.GetTranslate("menuBackup")     %></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -86,6 +87,7 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+
     </form>
 </body>
 </html>

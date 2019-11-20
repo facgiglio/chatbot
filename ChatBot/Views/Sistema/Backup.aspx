@@ -63,16 +63,7 @@
         });
 
         function Action(action, fileName) {
-            $.ajax({
-                type: "POST",
-                url: getActionUrl(action),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({ "fileName": fileName}),
-                success: function (result) {
-                    location.reload();
-                }
-            });
+            genericAction(action, { "fileName": fileName });
         }
         //--||-----------------------------------------------------------------------------------||--//
     </script>

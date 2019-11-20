@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="ChatBot" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="LogIn.aspx.cs" Inherits="ChatBot.LogIn" %>
 
-
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row" style="margin-top:50px;">
             <form>
@@ -29,7 +28,10 @@
                                     </label>
                                 </div>
                                 <div class="form-group">
-                                    <p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
+                                    <p class="text-center">Al loguearse acepta nuestros <a href="#">Términos de uso</a></p>
+                                </div>
+                                <div class="form-group">
+                                    <p class="text-center"><a href="RecuperarContrasena.aspx">¿Olvidó su contraseña?</a></p>
                                 </div>
                                 <div class="col-md-12 text-center ">
                                     <button id="btnLogIn" type="submit" class="btn btn-primary btn-lg">LOGIN</button>
@@ -58,6 +60,8 @@
             }
 
             $("#btnLogIn").click(function () {
+                $("#btnLogIn").attr("disabled", true);
+
                 var getUrl = "<%=Page.ResolveClientUrl("~/LogIn.aspx/Login")%>";
                 var jsonData = {
                     usuario: $("#txtEmail").val(),
@@ -78,13 +82,15 @@
                     dataType: "json",
                     data: JSON.stringify(jsonData),
                     success: function (result) {
-                        if (!CheckError(result)) {
+                        if (!checkError(result)) {
                             var getUrl = "<%=Page.ResolveClientUrl("~/Default.aspx")%>";
                             location.href = getUrl;
                         }
+                        $("#btnLogIn").attr("disabled", true);
                     },
                     error: function (error) {
                         showMessage("#form", error.responseJSON.Message, 5000);
+                        $("#btnLogIn").attr("disabled", true);
                     }
                 });
 

@@ -86,6 +86,9 @@
             })
 
             $("#btnRefrescarCache").click(function () {
+                //Para evitar multiples requests.
+                $("#btnRefrescarCache").attr("disabled", true);
+
                 $.ajax({
                     type: "POST",
                     url: getActionUrl("RefreshCache"),
@@ -115,15 +118,15 @@
                 case "@New":
                     ClearData();
                     $("#ddlSeccion").val($("#ddlSeccionFilter").val());
-                    title = tituloNuevo;
+                    title = tituloNuevo.replace("&#243;", "ó");
                     break;
                 case "@Upd":
                     Get();
-                    title = tituloActualizar;
+                    title = tituloActualizar.replace("&#243;", "ó");
                     break;
                 case "@Del":
                     Get();
-                    title = tituloEliminar;
+                    title = tituloEliminar.replace("&#243;", "ó");
                     break;
             }
             
@@ -158,22 +161,13 @@
         }
 
         function Accion() {
-            var jsonData = {
+            var entity = {
                 "IdMultiLenguaje": $("#hddId").val(),
                 "IdSeccion": $("#ddlSeccion").val(),
                 "Descripcion": $("#txtDescripcion").val()
             }
 
-            $.ajax({
-                type: "POST",
-                url: getActionUrl($("#hddModo").val()),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({ "multiLanguage": jsonData }),
-                success: function (result) {
-                    location.reload();
-                }
-            });
+            genericAction($("#hddModo").val(), { "multiLanguage": entity });
         }
         //--||-----------------------------------------------------------------------------------||--//
     </script>

@@ -3,7 +3,7 @@
 <%@ Import Namespace="Framework" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <% const string _page = "Rol.aspx";%>
+    <% const string _seccion = "Rol";%>
 
     <div class="form-group">
         <div class="row">
@@ -55,6 +55,10 @@
     </div>
 
     <script type="text/javascript">
+        const tituloNuevo = '<%: MultiLanguage.GetTranslate(_seccion, "tituloNuevo")%>';
+        const tituloActualizar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloActualizar")%>';
+        const tituloEliminar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloEliminar")%>';
+
         $(document).ready(function () {});
 
         //--||-----------------------------------------------------------------------------------||--//
@@ -73,15 +77,15 @@
             switch (mode) {
                 case "@New":
                     ClearData();
-                    title = '<%: MultiLanguage.GetTranslate(_page, "tituloNuevo")%>';
+                    title = tituloNuevo;
                     break;
                 case "@Upd":
                     Get(grdRol);
-                    title = '<%: MultiLanguage.GetTranslate(_page, "tituloModificar")%>';
+                    title = tituloActualizar;
                     break;
                 case "@Del":
                     Get(grdRol);
-                    title = '<%: MultiLanguage.GetTranslate(_page, "tituloEliminar")%>';
+                    title = tituloEliminar;
                     break;
             }
 
@@ -120,24 +124,12 @@
         }
 
         function Accion() {
-            var rol = {
+            var entity = {
                 "IdRol": $("#hddId").val(),
                 "Descripcion": $("#txtDescripcion").val()
             }
 
-            $.ajax({
-                type: "POST",
-                url: getActionUrl($("#hddModo").val()),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({ "rol": rol}),
-                success: function (result) {
-                    location.reload();
-                },
-                error: function (error) {
-                    showMessage("#exampleModal", error.responseJSON.Message, 5000, "danger");
-                }
-            });
+            genericAction($("#hddModo").val(), { "rol": entity });
         }
         //--||-----------------------------------------------------------------------------------||--//
     </script>

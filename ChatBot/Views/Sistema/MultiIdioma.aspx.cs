@@ -18,7 +18,7 @@ namespace ChatBot
         {
             //Controlo si puede ingresar a la pantalla.
             if (!Security.IsAuthorized((int)Constantes.Roles.MultiIdioma))
-                Response.Redirect(Page.ResolveClientUrl("~/LogIn.aspx"));
+                Response.Redirect(Page.ResolveClientUrl("~/Default.aspx"));
 
             int seccion = 0;
 
@@ -40,14 +40,14 @@ namespace ChatBot
             grdMultiIdioma.DataSource = new Framework.Rules.MultiLenguaje().GetMultiLanguageList(seccion);
 
             var idiomas = new Rules.Idioma().GetList();
-            var sectionList = new Rules.Seccion().GetList();
+            var sectionList = new Rules.Seccion().GetList().OrderBy(o => o.Descripcion).ToList();
 
             ddlSeccion.DataSource = sectionList;
             ddlSeccion.DataTextField = "Descripcion";
             ddlSeccion.DataValueField = "IdSeccion";
             ddlSeccion.DataBind();
 
-            sectionList.Add(new { IdSeccion = 0, Descripcion = "Select" });
+            sectionList.Add(new Framework.Models.Seccion{ IdSeccion = 0, Descripcion = "Select" });
             ddlSeccionFilter.SelectedValue = seccion.ToString();
             ddlSeccionFilter.DataSource = sectionList;
             ddlSeccionFilter.DataTextField = "Descripcion";

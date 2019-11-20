@@ -49,9 +49,9 @@ namespace Rules
 
             return mapper.GetByWhere(parameters.ToArray());
         }
-        public List<object> GetList()
+        public List<Framework.Models.Seccion> GetList()
         {
-            return mapper.GetList(null);
+            return mapper.GetListEntity(null);
         }
         #endregion
     }

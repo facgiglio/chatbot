@@ -20,11 +20,10 @@ namespace ChatBot
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
             //Controlo si puede ingresar a la pantalla.
-            if (!Security.IsAuthorized(_page, Constantes.Action.Listado))
-                Response.Redirect(Page.ResolveClientUrl("~/Views/LogIn.aspx"));
-            */
+            if (!Security.IsAuthorized((int)Constantes.Roles.Palabras))
+                Response.Redirect(Page.ResolveClientUrl("~/Default.aspx"));
+
             XmlConfigurator.Configure();
 
             grdPalabra.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdId"), ColumnType.Data, "IdPalabra", "", true, false);

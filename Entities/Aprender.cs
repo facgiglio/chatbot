@@ -9,7 +9,7 @@ namespace Models
 {
     public class Aprender
     {
-        [Insertable, Updatable]
+        [PrimaryKey]
         public int IdAprender { get; set; }
         [Insertable, Updatable]
         public int IdCliente { get; set; }

@@ -5,24 +5,20 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using Framework;
 using Framework.WebControls;
-using log4net;
-using log4net.Config;
 
 namespace ChatBot
 {
     public partial class Frase : Page
     {
-        private readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         const string _seccion = "Frase";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             //Controlo si puede ingresar a la pantalla.
             if (!Security.IsAuthorized((int)Constantes.Roles.Frases))
-                Response.Redirect(Page.ResolveClientUrl("~/LogIn.aspx"));
+                Response.Redirect(Page.ResolveClientUrl("~/Default.aspx"));
             
             grdFrase.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdId"), ColumnType.Data, "IdFrase", "", true, false);
             grdFrase.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblDescripcion"), ColumnType.Data, "Descripcion", "", false, true);

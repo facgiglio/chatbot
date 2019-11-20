@@ -103,58 +103,31 @@ namespace ChatBot {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl chatbotCode;
         
         /// <summary>
-        /// grdCliente control.
+        /// grdAprender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Framework.WebControls.Grid grdCliente;
+        protected global::Framework.WebControls.Grid grdAprender;
         
         /// <summary>
-        /// lblDireccion control.
+        /// lblFrase control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDireccion;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblFrase;
         
         /// <summary>
-        /// lblCodigoPostal control.
+        /// lblRespuesta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCodigoPostal;
-        
-        /// <summary>
-        /// lblTelefono control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTelefono;
-        
-        /// <summary>
-        /// lblHostName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblHostName;
-        
-        /// <summary>
-        /// lblHashKey control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblHashKey;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRespuesta;
         
         /// <summary>
         /// btnCancelar control.

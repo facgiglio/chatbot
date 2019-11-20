@@ -16,6 +16,10 @@ namespace ChatBot
         const string _seccion = "Backup";
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Controlo si puede ingresar a la pantalla.
+            if (!Security.IsAuthorized((int)Constantes.Roles.Backup))
+                Response.Redirect(Page.ResolveClientUrl("~/Default.aspx"));
+
             grdBackup.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdDirectorio"), ColumnType.Data, "Directorio", "", true, true);
             grdBackup.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdNombre"), ColumnType.Data, "Nombre", "", true, true);
             grdBackup.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdFechaCreacion"), ColumnType.Datetime, "FechaCreacion", "", true, true);

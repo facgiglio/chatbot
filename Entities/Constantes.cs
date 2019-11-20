@@ -14,6 +14,7 @@ using System.Threading.Tasks;
             Frases = 4,
             Palabras = 5,
             Cliente = 7,
-            Backup = 8
+            Backup = 8,
+            Chatbot = 9
         }
     }

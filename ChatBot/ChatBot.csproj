@@ -136,6 +136,7 @@
     <Content Include="Content\img\es.png" />
     <Content Include="Content\img\Open24-7.png" />
     <Content Include="Content\img\pt.png" />
+    <Content Include="RecuperarContrasena.aspx" />
     <Content Include="LogIn.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Contact.aspx" />
@@ -185,6 +186,13 @@
     <Compile Include="Chatbot\chatbotWS.asmx.cs">
       <DependentUpon>chatbotWS.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RecuperarContrasena.aspx.cs">
+      <DependentUpon>RecuperarContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecuperarContrasena.aspx.designer.cs">
+      <DependentUpon>RecuperarContrasena.aspx</DependentUpon>
     </Compile>
     <Compile Include="LogIn.aspx.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>

@@ -12,24 +12,23 @@ namespace ChatBot
 {
     public partial class Rol : Page
     {
-        const string _page = "Rol.aspx";
+        const string _seccion = "Rol";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
-            Controlo si puede ingresar a la pantalla.
-            if (!Security.IsAuthorized("Rol.aspx", Constantes.Action.Listado))
-                Response.Redirect(Page.ResolveClientUrl("~/Views/LogIn.aspx"));
-            */
+            //Controlo si puede ingresar a la pantalla.
+            if (!Security.IsAuthorized((int)Constantes.Roles.Roles))
+                Response.Redirect(Page.ResolveClientUrl("~/Default.aspx"));
 
             var descripcion = "";
+
             if (IsPostBack)
             {
                 descripcion = txtRol.Value;
             }
 
-            grdRol.AddColumn(MultiLanguage.GetTranslate(_page, "grdId"), ColumnType.Data, "IdRol", "", true, false);
-            grdRol.AddColumn(MultiLanguage.GetTranslate(_page, "grdDescripcion"), ColumnType.Data, "Descripcion", "", true, true);
+            grdRol.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdId"), ColumnType.Data, "IdRol", "", true, false);
+            grdRol.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdDescripcion"), ColumnType.Data, "Descripcion", "", true, true);
             grdRol.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate("cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
             grdRol.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate("cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
             grdRol.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate("cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
@@ -40,13 +39,14 @@ namespace ChatBot
 
         private void SetLanguage()
         {
-            tituloPrincipal.InnerHtml = MultiLanguage.GetTranslate(_page, "tituloPrincipal");
+            tituloPrincipal.InnerHtml = MultiLanguage.GetTranslate(_seccion, "tituloPrincipal");
+            lblRol.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblRol");
+            lblDescripcion.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblDescripcion");
+
             lblNuevo.InnerHtml = MultiLanguage.GetTranslate("lblNuevo");
             lblFiltrar.InnerHtml = MultiLanguage.GetTranslate("lblFiltrar");
             btnCancelar.InnerHtml = MultiLanguage.GetTranslate("btnCancelar");
             btnGuardar.InnerHtml = MultiLanguage.GetTranslate("btnGuardar");
-            lblRol.InnerHtml = MultiLanguage.GetTranslate(_page, "lblRol");
-            lblDescripcion.InnerHtml = MultiLanguage.GetTranslate(_page, "lblDescripcion");
         }
 
         [WebMethod]

@@ -1,8 +1,9 @@
 C:\Projects\Chatbot\Database\bin\Debug\Database.dacpac
-C:\Projects\Chatbot\Database\obj\Debug\Database.sqlprojResolveAssemblyReference.cache
 C:\Projects\Chatbot\Database\obj\Debug\Model.xml
 C:\Projects\Chatbot\Database\obj\Debug\refactor.xml
 C:\Projects\Chatbot\Database\obj\Debug\postdeploy.sql
 C:\Projects\Chatbot\Database\obj\Debug\predeploy.sql
 C:\Projects\Chatbot\Database\obj\Debug\Database.dll
 C:\Projects\Chatbot\Database\obj\Debug\Database.pdb
+C:\Projects\Chatbot\Database\bin\Debug\Database.dll
+C:\Projects\Chatbot\Database\bin\Debug\Database.pdb

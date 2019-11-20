@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-
 using Framework;
 using Framework.WebControls;
-using log4net;
-using log4net.Config;
+
 
 namespace ChatBot
 {
@@ -21,7 +15,7 @@ namespace ChatBot
         {
             //Controlo si puede ingresar a la pantalla.
             if (!Security.IsAuthorized((int)Constantes.Roles.Cliente))
-                Response.Redirect(Page.ResolveClientUrl("~/LogIn.aspx"));
+                Response.Redirect(Page.ResolveClientUrl("~/Default.aspx"));
 
             grdCliente.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdId"), ColumnType.Data, "IdCliente", "", true, false);
             grdCliente.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblRazonSocial"), ColumnType.Data, "RazonSocial", "", false, true);

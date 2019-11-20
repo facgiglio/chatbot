@@ -191,19 +191,7 @@
 
             if (!Validaciones(entity)) return false;
 
-            $.ajax({
-                type: "POST",
-                url: getActionUrl($("#hddModo").val()),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({ "cliente": entity }),
-                success: function (result) {
-                    location.reload();
-                },
-                error: function (error) {
-                    showMessage("#exampleModal", error.responseJSON.Message, 5000, "danger");
-                }
-            });
+            genericAction($("#hddModo").val(), { "cliente": entity });
         }
 
         function Validaciones(entity) {
@@ -216,7 +204,7 @@
             }
 
             if (!validToSave) {
-                showMessage("#exampleModal", error.responseJSON.Message, 5000, "info");
+                showMessage(error.responseJSON.Message, 5000, "info");
             }
 
             return validToSave;

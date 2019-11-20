@@ -1,4 +1,4 @@
-﻿function getActionUrl(modo) {
+﻿function getActionUrl(modo, url) {
     var loc = window.location.pathname + (window.location.pathname.indexOf('.aspx') === -1 ? '.aspx' : '');
     var page = loc.substring(loc.lastIndexOf('/') + 1, loc.length);
 
@@ -15,23 +15,31 @@
             return page + "/Obtener";
         case "@Fil":
             return page + "/Filtrar";
+        case "@Idioma":
+            return url;
         default:
             return page + "/" + modo;
     }
 }
 
-function CheckError(result) {
+function checkError(result) {
+
+    if (result.responseJSON != undefined) {
+        showMessage(result.responseJSON.Message, 5000, "danger");
+        return true;
+    }
+    
     switch (result.d.Result) {
         case "Message":
-            showMessage("body", result.d.Message, 5000, "success");
-            break;
+            showMessage(result.d.Message, 5000, "success");
+            return false;
         case "Success":
             return false;
         case "Error":
-            showMessage("body", result.d.Message, 5000, "danger");
+            showMessage(result.d.Message, 5000, "danger");
             return true;
         case "DataBaseCorrupt":
-            showMessage("body", result.d.Message, 5000, "danger");
+            showMessage(result.d.Message, 5000, "danger");
 
             window.setTimeout(function () {
                 window.location.replace("http://localhost/SitioWeb/Seguridad/BaseDeDatos.aspx");
@@ -43,10 +51,15 @@ function CheckError(result) {
     return true;
 }
 
-function showMessage(container, message, delay, style) {
-    style = (style === null ? "success" : style);
+function showMessage(message, delay, style) {
+    let container = "body";
 
-    message = message.replace("\r\n", "<br/>");
+    if ($('.modal').hasClass("in")) {
+        container = "#" + $('.modal').attr("id");
+    }
+
+    style = (style === null ? "success" : style);
+    message = message.replace(/\r\n/g, "<br/>");
 
     var div = document.createElement('div');
     div.id = "__messageError";
@@ -62,6 +75,27 @@ function showMessage(container, message, delay, style) {
     window.setTimeout(function () {
         $("#__messageError").fadeOut("slow");
     }, delay);
+}
+
+function genericAction(action, parameters, url) {
+    //Para evitar multiples requests.
+    $(event.target).attr("disabled", true);
+
+    $.ajax({
+        type: "POST",
+        url: getActionUrl(action, url),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify(parameters),
+        context: { button: event.target },
+        success: function (result) {
+            location.reload();
+        },
+        error: function (error) {
+            $(this.button).attr("disabled", false);
+            checkError(error);
+        }
+    });
 }
 
 

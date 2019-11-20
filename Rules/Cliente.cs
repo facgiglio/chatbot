@@ -66,23 +66,19 @@ namespace Rules
         #endregion
 
         #region Eliminar
-        public void Eliminar(int Id)
+        public void Eliminar(int IdCliente)
         {
             try
             {
-                List<SqlParameter> parameters = new List<SqlParameter>() {
-                    new SqlParameter("@IdCliente", Id)
-                };
-
-                mapper.Delete(parameters.ToArray());
+                mapper.Delete(IdCliente);
 
                 //Logueo la acción ejecutada.
-                Logger.Log(Logger.LogAction.Eliminar, _seccion, Id, Logger.LogType.Info, "");
+                Logger.Log(Logger.LogAction.Eliminar, _seccion, IdCliente, Logger.LogType.Info, "");
             }
             catch (Exception ex)
             {
                 //Logueo la acción ejecutada.
-                Logger.Log(Logger.LogAction.Eliminar, _seccion, Id, Logger.LogType.Exception, ex.Message);
+                Logger.Log(Logger.LogAction.Eliminar, _seccion, IdCliente, Logger.LogType.Exception, ex.Message);
 
                 //Throw the exception to the controller.
                 throw (ex);

@@ -5,7 +5,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <% const string _seccion = "Usuario";%>
 
-    <h2><%: Title %>.</h2>
+    <h2><label id="tituloPrincipal" runat="server" class="col-form-label"></label></h2>
     
     <CW:Grid runat="server" ID="grdUsuario" />
     
@@ -153,7 +153,7 @@
                 roles.push(rol);
             });            
             
-            var usuario = {
+            var entity = {
                 "IdUsuario": $("#hddId").val(),
                 "IdCliente": $("#ddlCliente").val(),
                 "Email": $("#txtEmail").val(),
@@ -164,19 +164,7 @@
                 "Roles": roles
             }
 
-            $.ajax({
-                type: "POST",
-                url: getActionUrl($("#hddModo").val()),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({ "usuario": usuario }),
-                success: function (result) {
-                    location.reload();
-                },
-                error: function (error) {
-                    showMessage("#exampleModal", error.responseJSON.Message, 5000, "danger");
-                }
-            });
+            genericAction($("#hddModo").val(), { "usuario": entity });
         }
         //--||-----------------------------------------------------------------------------------||--//
     </script>

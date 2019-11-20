@@ -20,26 +20,24 @@ namespace ChatBot
         protected void Page_Load(object sender, EventArgs e)
         {
             //Controlo si puede ingresar a la pantalla.
-            if (!Security.IsAuthorized((int)Constantes.Roles.Cliente))
-                Response.Redirect(Page.ResolveClientUrl("~/LogIn.aspx"));
+            if (!Security.IsAuthorized((int)Constantes.Roles.Chatbot))
+                Response.Redirect(Page.ResolveClientUrl("~/Default.aspx"));
 
-            grdCliente.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdId"), ColumnType.Data, "IdCliente", "", true, false);
-            grdCliente.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblRazonSocial"), ColumnType.Data, "RazonSocial", "", false, true);
-            grdCliente.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblDireccion"), ColumnType.Data, "Direccion", "", false, true);
-            grdCliente.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblHashKey"), ColumnType.Data, "HashKey", "", false, true);
-            grdCliente.AddContextMenu("cmnuNuevo", MultiLanguage.GetTranslate("cmnuNuevo"), "@New", "glyphicon glyphicon-file", "#5cb85c", "exampleModal");
-            grdCliente.AddContextMenu("cmnuModificar", MultiLanguage.GetTranslate("cmnuModificar"), "@Upd", "glyphicon glyphicon-pencil", "#337AB7", "exampleModal");
-            grdCliente.AddContextMenu("cmnuEliminar", MultiLanguage.GetTranslate("cmnuEliminar"), "@Del", "glyphicon glyphicon-remove", "#d9534f", "exampleModal");
-            grdCliente.DataSource = new Rules.Cliente().ObtenerListado();
+            grdAprender.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdId"), ColumnType.Data, "IdAprender", "", true, false);
+            grdAprender.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblMensaje"), ColumnType.Data, "Frase", "", true, false);
+            grdAprender.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblMensaje"), ColumnType.Data, "Frase", "", false, true);
+            grdAprender.AddContextMenu("cmnuAprender", MultiLanguage.GetTranslate("cmnuAprender"), "@New", "glyphicon glyphicon-eye-open", "#5cb85c", "exampleModal");
+
+            grdAprender.DataSource = new Rules.Aprender().ObtenerListado();
 
             var clientes = new Rules.Cliente().ObtenerClientes();
-            var cliente = clientes.Where(x => x.IdCliente == Framework.Helpers.Session.User.IdCliente).FirstOrDefault();
+            var cliente = clientes.Where(x => x.IdCliente == Framework.Session.User.IdCliente).FirstOrDefault();
 
             ddlCliente.DataSource = clientes.Cast<Object>().ToList();
             ddlCliente.DataTextField = "RazonSocial";
             ddlCliente.DataValueField = "IdCliente";
             ddlCliente.DataBind();
-            ddlCliente.SelectedValue = Framework.Helpers.Session.User.IdCliente.ToString();
+            ddlCliente.SelectedValue = Framework.Session.User.IdCliente.ToString();
             ddlCliente.Enabled = false;
 
             txtChatbotName.Value = cliente.ChatbotName;
@@ -60,11 +58,8 @@ namespace ChatBot
             lblCliente.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblCliente");
             lblChatbotName.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblChatbotName");
 
-            lblDireccion.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblDireccion");
-            lblCodigoPostal.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblCodigoPostal");
-            lblTelefono.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblTelefono");
-            lblHostName.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblHostName");
-            lblHashKey.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblHashKey");
+            lblRespuesta.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblRespuesta");
+            lblFrase.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblFrase");
         }
       
         [WebMethod]
@@ -85,6 +80,63 @@ namespace ChatBot
             }
         }
 
+        [WebMethod]
+        public static void GuardarFrasePalabra(int IdAprender, List<string> Palabras, string Frase, string Respuesta)
+        {
+            try
+            {
+                var aprendido = false;
+
+                //Controlo si completo la frase.
+                if (Frase != "")
+                {
+                    var brf = new Rules.Frase();
+                    var frase = new Models.Frase
+                    {
+                        Descripcion = Frase,
+                        Respuesta = Respuesta,
+                        Activo = true
+                    };
+
+                    //Si completa la frase la inserto en la base.
+                    brf.Insertar(frase);
+                    aprendido = true;
+                }
+                
+                //Entro si seleccionó mas de una palabra.
+                if (Palabras.Count > 2)
+                {
+                    var brp = new Rules.Palabra();
+                    var palabra = new Models.Palabra
+                    {
+                        Palabra1 = (Palabras.Count >= 1 ? Palabras[0] : ""),
+                        Palabra2 = (Palabras.Count >= 2 ? Palabras[1] : ""),
+                        Palabra3 = (Palabras.Count >= 3 ? Palabras[2] : ""),
+                        Respuesta = Respuesta
+                    };
+
+                    //Inserto la entidad en la base.
+                    brp.Insertar(palabra);
+                    aprendido = true;
+                }
+
+                //Solo la marco como aprendida si seleccionó agluna frase o palabra para guardar.
+                if (aprendido)
+                {
+                    var bra = new Rules.Aprender();
+                    var aprender = bra.ObtenerPorId(IdAprender);
+                    aprender.Aprendido = true;
+
+                    //Inserto ambas entidades.
+                    bra.Modificar(aprender);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+        }
+
 
         protected void SetChatbotScript(Models.Cliente cliente)
         {
@@ -97,5 +149,7 @@ namespace ChatBot
 
             chatbotCode.InnerHtml = script;
         }
+
+
     }
 }

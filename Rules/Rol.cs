@@ -18,23 +18,74 @@ namespace Rules
         #region Insertar
         public void Insertar(Framework.Models.Rol rol)
         {
-            mapper.Insert(rol);
+            try
+            {
+                //Valido la entidad antes.
+                this.Validar(rol);
+
+                //Inserto el rol validado.
+                mapper.Insert(rol);
+
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Insertar, _seccion, rol.IdRol, Logger.LogType.Info, "");
+            }
+            catch (Exception ex)
+            {
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Insertar, _seccion, rol.IdRol, Logger.LogType.Exception, ex.Message);
+
+                //Throw the exception to the controller.
+                throw (ex);
+            }
         }
         #endregion
 
         #region Modificar
         public void Modificar(Framework.Models.Rol rol)
         {
-            //Actualizo el rol
-            mapper.Update(rol);
+            try
+            {
+                //Valido la entidad antes.
+                this.Validar(rol);
+
+                //Actualizo el rol
+                mapper.Update(rol);
+
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Modificar, _seccion, rol.IdRol, Logger.LogType.Info, "");
+            }
+            catch (Exception ex)
+            {
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Modificar, _seccion, rol.IdRol, Logger.LogType.Exception, ex.Message);
+
+                //Throw the exception to the controller.
+                throw (ex);
+            }
         }
         #endregion
 
         #region Eliminar
-        public void Eliminar(int Id)
+        public void Eliminar(int IdRol)
         {
-            SqlParameter[] parameters = { new SqlParameter("@IdRol", Id) };
-            mapper.Delete(parameters);
+            try
+            {
+                //Elimino la entidad.                
+                mapper.Delete(IdRol);
+
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Modificar, _seccion, IdRol, Logger.LogType.Info, "");
+            }
+            catch (Exception ex)
+            {
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Modificar, _seccion, IdRol, Logger.LogType.Exception, ex.Message);
+
+                //Throw the exception to the controller.
+                throw (ex);
+            }
+
+           
         }
         #endregion
 

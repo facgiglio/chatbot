@@ -225,28 +225,59 @@ namespace Rules
         }
         #endregion
 
-        public Models.Palabra AnalizarPalabras(string texto)
+        private List<string> AnalizarPalabras(string mensaje)
         {
+            var palabras = new List<string>();
 
-            return null;
+            //
+            mensaje = mensaje.ToLower();
+
+            //Elimino los signos de puntuación para evitar interpretaciones incorrectas.
+            mensaje = mensaje.Replace("?", "").Replace(",", "");
+
+            //Reemplazo los acentos por letras comunes.
+            mensaje = mensaje.Replace("á", "a").Replace("é", "e").Replace("í", "i").Replace("ó", "o").Replace("ú", "u");
+
+            //Split del mensaje por punto.
+            palabras.AddRange(mensaje.Split(' '));
+
+            return palabras;
         }
 
-        public List<Models.Palabra> ConsultarmatrixEngine(Models.Palabra palabra)
+        public string ConsultarmatrixEngine(int idCliente, string message)
         {
+            SqlParameter[] param = {
+                new SqlParameter("@Palabras", String.Join("|", AnalizarPalabras(message))),
+                new SqlParameter("@IdCliente", idCliente),
+            };
 
-            return null;
+            //Obtengo las palabras guardadas en la base.
+            var palabras = mapper.GetListEntity("BuscarPalabra", param);
+
+            //Si no hay respuesta devuelvo vacío para continuar con el proceso.
+            if (palabras.Count == 0) return "";
+
+            //Retorno la primer respuesta que encuentro.
+            return VerificarPalabras(message, palabras);
         }
 
-        public string ProcesarPalabras(string texto)
+        public string VerificarPalabras(string message, List<Models.Palabra> palabras)
         {
+            foreach (var palabra in palabras)
+            {
+                if (message.Contains(palabra.Palabra1))
+                {
+                    if (message.Contains(palabra.Palabra2))
+                    {
+                        if (message.Contains(palabra.Palabra3))
+                        {
+                            return palabra.Respuesta;
+                        }
+                    }
+                }
+            }
+
             return "";
         }
-
-        public bool VerificarPalabras(string texto)
-        {
-            return false;
-        }
-
-
     }
 }

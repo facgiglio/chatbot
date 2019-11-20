@@ -142,22 +142,7 @@
                 "Respuesta": $("#txtRespuesta").val()
             }
 
-            $.ajax({
-                type: "POST",
-                url: getActionUrl($("#hddModo").val()),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({ "palabra": entity }),
-                success: function (result) {
-                    location.reload();
-                },
-                error: function (error) {
-                    showMessage("#exampleModal", error.responseJSON.Message, 5000, "danger");
-                }
-            });
-            
-
-
+            genericAction($("#hddModo").val(), { "palabra": entity });
         }
         //--||-----------------------------------------------------------------------------------||--//
     </script>

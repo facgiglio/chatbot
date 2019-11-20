@@ -29,7 +29,7 @@ namespace ChatBot
         [WebMethod]
         public static void LogOut()
         {
-            Framework.Helpers.Session.ClearSession();
+            Framework.Session.ClearSession();
         }
     }
 }

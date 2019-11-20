@@ -28,6 +28,12 @@
             -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
             box-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
         }
+
+        span[name='spanPalabra']{
+            cursor:pointer;
+            margin-right:10px;
+            user-select: none;
+        }
     </style>
 
     <div class="form-group">
@@ -72,7 +78,7 @@
         <pre><code class="language-html" data-lang="html" id="chatbotCode" runat="server"></code></pre>
     </div>
     
-    <CW:Grid runat="server" ID="grdCliente" />
+    <CW:Grid runat="server" ID="grdAprender" />
     
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
@@ -84,55 +90,65 @@
                 <div class="modal-body">
                     
                     <div class="row form-group">
-                        <div class="col-sm-6">
-                            <label id="lblDireccion" for="txtDireccion" class="col-form-label" runat="server"></label>
-                            <input id="txtDireccion" class="form-control form-control-sm" />
-                        </div>
-                        <div class="col-sm-3">
-                            <label id="lblCodigoPostal" for="txtCodigoPostal" class="col-form-label" runat="server"></label>
-                            <input id="txtCodigoPostal" class="form-control form-control-sm"/>
-                        </div>
-                        <div class="col-sm-3">
-                            <label id="lblTelefono" for="txtTelefono" class="col-form-label" runat="server"></label>
-                            <input id="txtTelefono" class="form-control form-control-sm"/>
+                        <div class="col-sm-12">
+                            <label id="lblFrase" class="col-form-label" runat="server"></label>
+                            <h4 id="divPalabras">
+                            </h4>
                         </div>
                     </div>
                     <div class="row form-group">
-                        <div class="col-sm-6">
-                            <label id="lblHostName" for="txtHostName" class="col-form-label" runat="server"></label>
-                            <input id="txtHostName" class="form-control form-control-sm" />
+                        <div class="col-sm-12">
+                            <input id="txtFrase" class="form-control form-control-sm" />
                         </div>
-                        <div class="col-sm-6">
-                            <label id="lblHashKey" for="txtHashKey" class="col-form-label" runat="server"></label>
-                            <input id="txtHashKey" class="form-control form-control-sm" disabled/>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-sm-12">
+                            <label id="lblRespuesta" for="txtRespuesta" class="col-form-label" runat="server"></label>
+                            <input id="txtRespuesta" class="form-control form-control-sm" />
                         </div>
                     </div>
 
                     <input type="hidden" id="hddModo" value="alta" />
                     <input type="hidden" id="hddId" value="0" />
-                    <input type="hidden" id="hddContrasena" value="0" />
                 </div>
                 <div class="modal-footer">
                     <button id="btnCancelar" runat="server" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button id="btnGuardar" runat="server" type="button" class="btn btn-primary" onclick="Accion(); return false;">Save changes</button>
+                    <button id="btnGuardar" runat="server" type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>
 
     <script type="text/javascript">
-        const tituloNuevo = '<%: MultiLanguage.GetTranslate(_seccion, "tituloNuevoCliente")%>';
-        const tituloActualizar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloActualizarCliente")%>';
-        const tituloEliminar = '<%: MultiLanguage.GetTranslate(_seccion, "tituloEliminarCliente")%>';
+        const tituloNuevo = '<%: MultiLanguage.GetTranslate(_seccion, "tituloNuevo")%>';
+        var cant = 0;
 
         $(document).ready(function () {
             $("#btnGuardarChatbotName").click(function () {
-                var parameters = {
+                let parameters = {
                     "IdCliente": parseInt($("#ddlCliente").val()),
                     "ChatbotName": $("#txtChatbotName").val()
                 }
 
                 Accion("GuardarChatbotName", parameters);
+            });
+
+            $("#btnGuardar").click(function () {
+                let palabras = $(".label-success").map(function () {
+                    return this.innerHTML;
+                }).get();
+
+                console.log(palabras);
+
+                let parameters = {
+                    "IdAprender": $("#hddId").val(),
+                    "Palabras": palabras,
+                    "Frase": $("#txtFrase").val(),
+                    "Respuesta": $("#txtRespuesta").val()
+                }
+
+                Accion("GuardarFrasePalabra", parameters);
             });
         });
 
@@ -151,16 +167,9 @@
 
             switch (mode) {
                 case "@New":
-                    ClearData();
+                    cant = 0;
+                    Get(grdAprender);
                     title = tituloNuevo;
-                    break;
-                case "@Upd":
-                    Get(grdCliente);
-                    title = tituloActualizar;
-                    break;
-                case "@Del":
-                    Get(grdCliente);
-                    title = tituloEliminar;
                     break;
             }
 
@@ -168,55 +177,38 @@
         })
         //--||-----------------------------------------------------------------------------------||--//
         function Get(grid) {
-            var entity = JSON.parse($(grid.activeRow).attr("rowdata"));
-            var jsonData = { "Id": entity.IdCliente}
-            $.ajax({
-                type: "POST",
-                url: getActionUrl("@Get"),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify(jsonData),
-                success: function (result) {
-                    LoadData(result.d)
-                }
+            let entity = JSON.parse($(grid.activeRow).attr("rowdata"));
+            let palabra = "<span name='spanPalabra' class='label label-default'>{0}</span>";
+
+            //Seteo el id del mensaje a aprender.
+            $("#hddId").val(entity.IdAprender);
+
+            //Seteo la frase para editar y guardar.
+            $("#txtFrase").val(entity.Frase);
+
+            //Limpio el div
+            $("#divPalabras").html("");
+
+            entity.Frase.split(" ").forEach(function (item) {
+                $("#divPalabras").append(palabra.replace("{0}", item));
             });
-        }
 
-        function HashKey(grid, type) {
-            var entity = JSON.parse($(grid.activeRow).attr("rowdata"));
-            var jsonData = { "Id": entity.IdCliente}
-            $.ajax({
-                type: "POST",
-                url: getActionUrl(type),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify(jsonData),
-                success: function (result) {
-                    location.reload();
+            $("span[name='spanPalabra']").click(function () {
+                if ($(this).hasClass("label-default")) {
+                    if(cant == 3) return false;
+
+                    $(this).removeClass("label-default");
+                    $(this).addClass("label-success");
+                    cant++;
                 }
+                else {
+                    $(this).removeClass("label-success");
+                    $(this).addClass("label-default");
+                    cant--;
+                }
+
+                console.log(cant);
             });
-        }
-
-        function LoadData(entity) { 
-            ClearData();
-
-            $("#hddId").val(entity.IdCliente);
-            $("#txtRazonSocial").val(entity.RazonSocial);
-            $("#txtDireccion").val(entity.Direccion);
-            $("#txtCodigoPostal").val(entity.CodigoPostal);
-            $("#txtTelefono").val(entity.Telefono);
-            $("#txtHostName").val(entity.HostName);
-            $("#txtHashKey").val(entity.HashKey);
-        }
-
-        function ClearData() {
-            $("#hddId").val(0);
-            $("#txtRazonSocial").val("");
-            $("#txtDireccion").val("");
-            $("#txtCodigoPostal").val("");
-            $("#txtTelefono").val("");
-            $("#txtHostName").val("");
-            $("#txtHashKey").val("");
         }
 
         function Accion(action, parameters) {
@@ -230,12 +222,11 @@
                     location.reload();
                 },
                 error: function (error) {
-                    showMessage("#exampleModal", error.responseJSON.Message, 5000, "danger");
+                    showMessage(error.responseJSON.Message, 5000, "danger");
                 }
             });
         }
         //--||-----------------------------------------------------------------------------------||--//
-
     </script>
 
 </asp:Content>

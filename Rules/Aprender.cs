@@ -42,10 +42,6 @@ namespace Rules
         {
             try
             {
-                List<SqlParameter> parameters = new List<SqlParameter>() {
-                    new SqlParameter("@IdAprender", Id)
-                };
-
                 return mapper.GetById(Id); ;
             }
             catch (Exception ex)
@@ -53,9 +49,15 @@ namespace Rules
                 throw (ex);
             }
         }
-        public List<object> GetList()
+       
+        public List<object> ObtenerListado()
         {
-            return mapper.GetList(null);
+            List<SqlParameter> parameters = new List<SqlParameter>() {
+                new SqlParameter("@Aprendido", false),
+                new SqlParameter("@IdCliente", Framework.Session.User.IdCliente)
+            };
+
+            return mapper.GetList(parameters.ToArray());
         }
         #endregion
     }
