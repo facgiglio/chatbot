@@ -71,6 +71,7 @@
                             <ul class="dropdown-menu">
                                 <li runat="server" id="mnuMultiidioma" rol="3"><a href="<%:Page.ResolveClientUrl("~/Views/Sistema/MultiIdioma")  %>"><%: MultiLanguage.GetTranslate("menuMultiIdioma")%></a></li>
                                 <li runat="server" id="mnuBackup"      rol="8"><a href="<%:Page.ResolveClientUrl("~/Views/Sistema/Backup")       %>"><%: MultiLanguage.GetTranslate("menuBackup")     %></a></li>
+                                <li runat="server" id="mnuBitacora"   rol="10"><a href="<%:Page.ResolveClientUrl("~/Views/Sistema/Bitacora")     %>"><%: MultiLanguage.GetTranslate("mnuBitacora")    %></a></li>
                             </ul>
                         </li>
                     </ul>

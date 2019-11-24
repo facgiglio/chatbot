@@ -150,7 +150,6 @@ C:\Projects\Chatbot\ChatBot\bin\roslyn\VBCSCompiler.exe.config
 C:\Projects\Chatbot\ChatBot\bin\Antlr3.Runtime.dll
 C:\Projects\Chatbot\ChatBot\bin\AspNet.ScriptManager.bootstrap.dll
 C:\Projects\Chatbot\ChatBot\bin\AspNet.ScriptManager.jQuery.dll
-C:\Projects\Chatbot\ChatBot\bin\Entities.dll
 C:\Projects\Chatbot\ChatBot\bin\Framework.dll
 C:\Projects\Chatbot\ChatBot\bin\log4net.dll
 C:\Projects\Chatbot\ChatBot\bin\Microsoft.AI.Agent.Intercept.dll
@@ -170,7 +169,6 @@ C:\Projects\Chatbot\ChatBot\bin\Rules.dll
 C:\Projects\Chatbot\ChatBot\bin\System.Web.Optimization.dll
 C:\Projects\Chatbot\ChatBot\bin\WebGrease.dll
 C:\Projects\Chatbot\ChatBot\bin\Framework.pdb
-C:\Projects\Chatbot\ChatBot\bin\Entities.pdb
 C:\Projects\Chatbot\ChatBot\bin\Rules.pdb
 C:\Projects\Chatbot\ChatBot\bin\log4net.xml
 C:\Projects\Chatbot\ChatBot\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
@@ -369,3 +367,5 @@ C:\Facu\chatbot\ChatBot\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Facu\chatbot\ChatBot\bin\Microsoft.AI.WindowsServer.xml
 C:\Facu\chatbot\ChatBot\bin\Microsoft.AI.Web.xml
 C:\Facu\chatbot\ChatBot\obj\Debug\ChatBot.csproj.CopyComplete
+C:\Projects\Chatbot\ChatBot\bin\Models.dll
+C:\Projects\Chatbot\ChatBot\bin\Models.pdb

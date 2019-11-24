@@ -89,14 +89,16 @@ namespace ChatBot
                     childMenus = new List<HtmlGenericControl>{
                         mnuFrase,
                         mnuPalabra,
-                        mnuCliente
+                        mnuCliente,
+                        mnuChatbot
                     }
                 },
                 new Menu {
                     parentMenu = mnuSistema,
                     childMenus = new List<HtmlGenericControl>{
                         mnuMultiidioma,
-                        mnuBackup
+                        mnuBackup,
+                        mnuBitacora
                     }
                 }
             };

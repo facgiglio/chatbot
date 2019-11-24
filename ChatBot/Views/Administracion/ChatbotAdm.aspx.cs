@@ -26,7 +26,7 @@ namespace ChatBot
             grdAprender.AddColumn(MultiLanguage.GetTranslate(_seccion, "grdId"), ColumnType.Data, "IdAprender", "", true, false);
             grdAprender.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblMensaje"), ColumnType.Data, "Frase", "", true, false);
             grdAprender.AddColumn(MultiLanguage.GetTranslate(_seccion, "lblMensaje"), ColumnType.Data, "Frase", "", false, true);
-            grdAprender.AddContextMenu("cmnuAprender", MultiLanguage.GetTranslate("cmnuAprender"), "@New", "glyphicon glyphicon-eye-open", "#5cb85c", "exampleModal");
+            grdAprender.AddContextMenu("cmnuAprender", MultiLanguage.GetTranslate(_seccion, "cmnuAprender"), "@New", "glyphicon glyphicon-eye-open", "#5cb85c", "exampleModal");
 
             grdAprender.DataSource = new Rules.Aprender().ObtenerListado();
 
@@ -57,6 +57,7 @@ namespace ChatBot
             lblFiltrar.InnerHtml = MultiLanguage.GetTranslate("lblFiltrar");
             lblCliente.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblCliente");
             lblChatbotName.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblChatbotName");
+            lblAyuda.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblAyuda").Replace("{0}", "<kbd><kbd>ctrl</kbd> + <kbd>C</kbd></kbd>").Replace("{1}", "<kbd><kbd>ctrl</kbd> + <kbd>V</kbd></kbd>");
 
             lblRespuesta.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblRespuesta");
             lblFrase.InnerHtml = MultiLanguage.GetTranslate(_seccion, "lblFrase");

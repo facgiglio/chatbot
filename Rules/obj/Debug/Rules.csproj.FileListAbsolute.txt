@@ -16,12 +16,10 @@ C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\log4
 C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Rules\bin\Debug\log4net.xml
 C:\Projects\Chatbot\Rules\bin\Debug\Rules.dll
 C:\Projects\Chatbot\Rules\bin\Debug\Rules.pdb
-C:\Projects\Chatbot\Rules\bin\Debug\Entities.dll
 C:\Projects\Chatbot\Rules\bin\Debug\Framework.dll
 C:\Projects\Chatbot\Rules\bin\Debug\log4net.dll
 C:\Projects\Chatbot\Rules\bin\Debug\Newtonsoft.Json.dll
 C:\Projects\Chatbot\Rules\bin\Debug\Framework.pdb
-C:\Projects\Chatbot\Rules\bin\Debug\Entities.pdb
 C:\Projects\Chatbot\Rules\bin\Debug\log4net.xml
 C:\Projects\Chatbot\Rules\bin\Debug\Newtonsoft.Json.pdb
 C:\Projects\Chatbot\Rules\bin\Debug\Newtonsoft.Json.xml
@@ -61,3 +59,5 @@ C:\Facu\chatbot\Rules\bin\Debug\log4net.xml
 C:\Facu\chatbot\Rules\bin\Debug\Newtonsoft.Json.pdb
 C:\Facu\chatbot\Rules\bin\Debug\Newtonsoft.Json.xml
 C:\Facu\chatbot\Rules\obj\Debug\Rules.csproj.CopyComplete
+C:\Projects\Chatbot\Rules\bin\Debug\Models.dll
+C:\Projects\Chatbot\Rules\bin\Debug\Models.pdb

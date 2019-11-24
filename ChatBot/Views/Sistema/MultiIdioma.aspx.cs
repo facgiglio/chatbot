@@ -40,16 +40,19 @@ namespace ChatBot
             grdMultiIdioma.DataSource = new Framework.Rules.MultiLenguaje().GetMultiLanguageList(seccion);
 
             var idiomas = new Rules.Idioma().GetList();
-            var sectionList = new Rules.Seccion().GetList().OrderBy(o => o.Descripcion).ToList();
+            var seccionList = new Rules.Seccion().GetList().OrderBy(o => o.Descripcion).ToList();
 
-            ddlSeccion.DataSource = sectionList;
+            ddlSeccion.DataSource = seccionList;
             ddlSeccion.DataTextField = "Descripcion";
             ddlSeccion.DataValueField = "IdSeccion";
             ddlSeccion.DataBind();
 
-            sectionList.Add(new Framework.Models.Seccion{ IdSeccion = 0, Descripcion = "Select" });
+            var secciones = new List<Framework.Models.Seccion>();
+            secciones.Add(new Framework.Models.Seccion { IdSeccion = 0, Descripcion = "Seleccione" });
+            secciones.AddRange(seccionList);
+
             ddlSeccionFilter.SelectedValue = seccion.ToString();
-            ddlSeccionFilter.DataSource = sectionList;
+            ddlSeccionFilter.DataSource = secciones;
             ddlSeccionFilter.DataTextField = "Descripcion";
             ddlSeccionFilter.DataValueField = "IdSeccion";
             ddlSeccionFilter.DataBind();

@@ -176,6 +176,7 @@
     <Content Include="Views\Sistema\MultiIdioma.aspx" />
     <Content Include="Views\Seguridad\Rol.aspx" />
     <Content Include="Views\Seguridad\Usuario.aspx" />
+    <Content Include="Views\Sistema\Bitacora.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -304,6 +305,13 @@
     </Compile>
     <Compile Include="Views\Seguridad\Usuario.aspx.designer.cs">
       <DependentUpon>Usuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sistema\Bitacora.aspx.cs">
+      <DependentUpon>Bitacora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Sistema\Bitacora.aspx.designer.cs">
+      <DependentUpon>Bitacora.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

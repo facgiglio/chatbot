@@ -284,7 +284,12 @@ namespace Rules
         {
             return mapper.GetList(null);
         }
-        
+
+        public List<Framework.Models.Usuario> GetEntityList()
+        {
+            return mapper.GetListEntity(null);
+        }
+
         public Framework.Models.Usuario GetByUsuario(string Usuario)
         {
             MapperMany<Framework.Models.Usuario, Framework.Models.Rol> mapperRol = new MapperMany<Framework.Models.Usuario, Framework.Models.Rol>();

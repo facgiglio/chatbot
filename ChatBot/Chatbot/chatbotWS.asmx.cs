@@ -26,10 +26,15 @@ namespace ChatBot.Chatbot
 
                 if (cliente == null)
                 {
-                    return "El sitio no está correctamente configurado para ejecutar el chatbot, contactese con Facax System.";
+                    return "El cliente no está registrado.";
                 }
 
-                if (!hostName.Contains(cliente.HostName))
+                if (cliente.HostName == "" || cliente.HostName is null)
+                {
+                    return "El HostName no está configurado, por favor comuníquese con FacaxSystem.";
+                }
+
+                if (!hostName.ToLower().Contains(cliente.HostName.ToLower()))
                 {
                     return "El sitio no está correctamente configurado para ejecutar el chatbot, contactese con Facax System.";
                 }
@@ -41,7 +46,7 @@ namespace ChatBot.Chatbot
             }
             catch (Exception Ex)
             {
-                return "Ocurrió un error al procesar tu consulta, intentalo nuevamente.";
+                return "Ocurrió un error al procesar tu consulta, intentalo nuevamente. " + Ex.Message;
             }
             
         }

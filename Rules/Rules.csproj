@@ -49,6 +49,7 @@
     <Compile Include="Palabra.cs" />
     <Compile Include="Frase.cs" />
     <Compile Include="Aprender.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="Rol.cs" />
     <Compile Include="Idioma.cs" />
     <Compile Include="Seccion.cs" />

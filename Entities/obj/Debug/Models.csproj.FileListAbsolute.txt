@@ -12,10 +12,6 @@ C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Entities\obj\Debug\E
 C:\Users\Facax\Google Drive\Facultad\TFI 2019\Tecno\ChatBot\Entities\obj\Debug\Entities.pdb
 C:\Projects\Chatbot\Entities\obj\Debug\Models.csprojResolveAssemblyReference.cache
 C:\Projects\Chatbot\Entities\obj\Debug\Models.csproj.CoreCompileInputs.cache
-C:\Projects\Chatbot\Entities\obj\Debug\Entities.dll
-C:\Projects\Chatbot\Entities\obj\Debug\Entities.pdb
-C:\Projects\Chatbot\Entities\bin\Debug\Entities.dll
-C:\Projects\Chatbot\Entities\bin\Debug\Entities.pdb
 C:\Projects\Chatbot\Entities\bin\Debug\Framework.dll
 C:\Projects\Chatbot\Entities\bin\Debug\Newtonsoft.Json.dll
 C:\Projects\Chatbot\Entities\bin\Debug\Framework.pdb
@@ -48,3 +44,7 @@ C:\Facu\chatbot\Entities\obj\Debug\Entities.dll
 C:\Facu\chatbot\Entities\obj\Debug\Entities.pdb
 C:\Facu\chatbot\Entities\bin\Debug\log4net.dll
 D:\Projects\Chatbot\Entities\bin\Debug\log4net.dll
+C:\Projects\Chatbot\Entities\bin\Debug\Models.dll
+C:\Projects\Chatbot\Entities\bin\Debug\Models.pdb
+C:\Projects\Chatbot\Entities\obj\Debug\Models.dll
+C:\Projects\Chatbot\Entities\obj\Debug\Models.pdb

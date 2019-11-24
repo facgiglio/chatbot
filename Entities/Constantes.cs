@@ -15,6 +15,7 @@ using System.Threading.Tasks;
             Palabras = 5,
             Cliente = 7,
             Backup = 8,
-            Chatbot = 9
-        }
+            Chatbot = 9,
+            Bitacora = 10
+    }
     }

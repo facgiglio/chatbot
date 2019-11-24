@@ -86,11 +86,11 @@
                             var getUrl = "<%=Page.ResolveClientUrl("~/Default.aspx")%>";
                             location.href = getUrl;
                         }
-                        $("#btnLogIn").attr("disabled", true);
+                        $("#btnLogIn").attr("disabled", false);
                     },
                     error: function (error) {
                         showMessage("#form", error.responseJSON.Message, 5000);
-                        $("#btnLogIn").attr("disabled", true);
+                        $("#btnLogIn").attr("disabled", false);
                     }
                 });
 

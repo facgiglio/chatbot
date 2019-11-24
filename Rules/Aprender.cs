@@ -10,30 +10,74 @@ namespace Rules
     public class Aprender
     {
         Mapper<Models.Aprender> mapper = new Mapper<Models.Aprender>();
+        private string _seccion
+        {
+            get { return this.GetType().Name; }
+        }
 
         #region Insertar
         public void Insertar(Models.Aprender aprender)
         {
-            mapper.Insert(aprender);
+            try
+            {
+                //Actualizo el aprender
+                mapper.Insert(aprender);
+
+                Logger.LogInfo("Se inserto el registro: " + aprender.IdAprender);
+            }
+            catch (Exception ex)
+            {
+
+                Logger.LogException("Error al insertar: " + ex.Message);
+
+                //Throw the exception to the controller.
+                throw (ex);
+            }
         }
         #endregion
 
         #region Modificar
         public void Modificar(Models.Aprender aprender)
         {
-            //Actualizo el aprender
-            mapper.Update(aprender);
+            try
+            {
+                //Actualizo el aprender
+                mapper.Update(aprender);
+
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Modificar, _seccion, aprender.IdAprender, Logger.LogType.Info, "");
+            }
+            catch (Exception ex)
+            {
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Modificar, _seccion, aprender.IdAprender, Logger.LogType.Exception, ex.Message);
+
+                //Throw the exception to the controller.
+                throw (ex);
+            }
         }
         #endregion
 
         #region Eliminar
-        public void Eliminar(int Id)
+        public void Eliminar(int IdAprender)
         {
-            List<SqlParameter> parameters = new List<SqlParameter>();
+            try
+            {
+                //Actualizo el aprender
+                mapper.Delete(IdAprender);
 
-            parameters.Add(new SqlParameter("@IdAprender", Id));
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Eliminar, _seccion, IdAprender, Logger.LogType.Info, "");
+            }
+            catch (Exception ex)
+            {
+                //Logueo la acción ejecutada.
+                Logger.Log(Logger.LogAction.Eliminar, _seccion, IdAprender, Logger.LogType.Exception, ex.Message);
 
-            mapper.Delete(parameters.ToArray());
+                //Throw the exception to the controller.
+                throw (ex);
+            }
+            
         }
         #endregion
 

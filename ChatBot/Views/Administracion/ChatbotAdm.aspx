@@ -70,10 +70,8 @@
     </div> 
     
     <div class="form-group">
-        <div class="bs-example">
-            Para implementar el chatbot en su página, seleccione el código de abajo y presione
-            <kbd><kbd>ctrl</kbd> + <kbd>C</kbd></kbd> para copiar el código y luego
-            <kbd><kbd>ctrl</kbd> + <kbd>V</kbd></kbd> para pegar el código en su sitio web.
+        <div class="bs-example" id="lblAyuda" runat="server">
+            
         </div>
         <pre><code class="language-html" data-lang="html" id="chatbotCode" runat="server"></code></pre>
     </div>
