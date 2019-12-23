@@ -79,14 +79,14 @@
     margin: 10px 0 0 4%;
 }
 
-.chatbot .messageUser {
-    width: 75%;
-    margin: 2% 5% 2% 20%;
-    padding: 5px;
-    border-radius: 7px;
-    background-color: rgb(122, 194, 28);
-    color: white;
-}
+    .chatbot .messageUser {
+        width: 75%;
+        margin: 2% 5% 2% 20%;
+        padding: 5px;
+        border-radius: 7px;
+        background-color: #dcf8c6;
+        color: white;
+    }
 
 .chatbot .messageNameUser {
     margin: 10px 5% 0 4%;

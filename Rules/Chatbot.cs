@@ -24,9 +24,6 @@ namespace Rules
 
             //Enviamos el mensaje recibido para ser procesado.
             var frases = frase.AnalizarFrase(mensaje);
-
-            Logger.LogInfo("1 - Frase Analizada: " + mensaje);
-
             //Busco la respuesta a la frase, si es que la encuentra.
             respuesta = frase.BuscarFrase(IdCliente, frases);
 
@@ -34,15 +31,11 @@ namespace Rules
             if (respuesta == "")
             {
                 respuesta = palabra.ConsultarmatrixEngine(IdCliente, mensaje);
-
-                Logger.LogInfo("2 - Palabras analizadas: " + mensaje);
             }
 
             //Si no encontré la respuesta, 
             if (respuesta == "")
             {
-                Logger.LogInfo("3 - Intento de aprender: " + mensaje);
-
                 var br = new Rules.Aprender();
                 var aprender = new Models.Aprender {
                     IdCliente = IdCliente,
@@ -55,8 +48,6 @@ namespace Rules
 
                 //Inserto la entidad para poder lugeo configurarlo.
                 br.Insertar(aprender);
-
-                Logger.LogInfo("4 - Aprendido: " + mensaje);
             }
 
             return respuesta;
